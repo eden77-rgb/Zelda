@@ -1,0 +1,332 @@
+{
+    "cameras": [
+        {
+            "name": "Menu",
+            "start_x": -128,
+            "start_y": -128,
+            "end_x": -128,
+            "end_y": -128,
+            "zoom": 2
+        },
+        {
+            "name": "Sacred Grove",
+            "start_x": 192,
+            "start_y": 912,
+            "end_x": 192,
+            "end_y": 1200,
+            "zoom": 2
+        },
+        {
+            "name": "Lost Woods",
+            "start_x": 193,
+            "start_y": 1427,
+            "end_x": 961,
+            "end_y": 2227,
+            "zoom": 2
+        },
+        {
+            "name": "Graveyard",
+            "start_x": 192,
+            "start_y": 2454,
+            "end_x": 448,
+            "end_y": 2742,
+            "zoom": 2
+        },
+        {
+            "name": "Kakariko Village",
+            "start_x": 193,
+            "start_y": 2969,
+            "end_x": 961,
+            "end_y": 3769,
+            "zoom": 2
+        },
+        {
+            "name": "Blind's Hideout",
+            "start_x": 192,
+            "start_y": 3996,
+            "end_x": 448,
+            "end_y": 4284,
+            "zoom": 2
+        },
+        {
+            "name": "Library & House of Books",
+            "start_x": 706,
+            "start_y": 3996,
+            "end_x": 962,
+            "end_y": 4284,
+            "zoom": 2
+        },
+        {
+            "name": "Desert of Mystery",
+            "start_x": 193,
+            "start_y": 4511,
+            "end_x": 961,
+            "end_y": 5295,
+            "zoom": 2
+        },
+        {
+            "name": "Twin Lumberjacks' Woodsmen's Hut",
+            "start_x": 1220,
+            "start_y": 1426,
+            "end_x": 1476,
+            "end_y": 1714,
+            "zoom": 2
+        },
+        {
+            "name": "Death Mountain Access Cave",
+            "start_x": 1220,
+            "start_y": 1940,
+            "end_x": 1476,
+            "end_y": 2228,
+            "zoom": 2
+        },
+        {
+            "name": "Whirlpool Waterway",
+            "start_x": 1220,
+            "start_y": 2454,
+            "end_x": 1476,
+            "end_y": 2742,
+            "zoom": 2
+        },
+        {
+            "name": "1",
+            "start_x": 1220,
+            "start_y": 2968,
+            "end_x": 1476,
+            "end_y": 3256,
+            "zoom": 2
+        },
+        {
+            "name": "Blacksmiths' Forge",
+            "start_x": 1220,
+            "start_y": 3482,
+            "end_x": 1476,
+            "end_y": 3770,
+            "zoom": 2
+        },
+        {
+            "name": "Haunted Grove",
+            "start_x": 1220,
+            "start_y": 3996,
+            "end_x": 1476,
+            "end_y": 4284,
+            "zoom": 2
+        },
+        {
+            "name": "Desert Plateau Cave",
+            "start_x": 1220,
+            "start_y": 4510,
+            "end_x": 1476,
+            "end_y": 4798,
+            "zoom": 2
+        },
+        {
+            "name": "Secret Rupee Cave",
+            "start_x": 1220,
+            "start_y": 5024,
+            "end_x": 1476,
+            "end_y": 5295,
+            "zoom": 2
+        },
+        {
+            "name": "Tower of Hera",
+            "start_x": 1735,
+            "start_y": 1427,
+            "end_x": 2503,
+            "end_y": 2227,
+            "zoom": 2
+        },
+        {
+            "name": "Sanctuary",
+            "start_x": 1735,
+            "start_y": 2454,
+            "end_x": 1990,
+            "end_y": 2742,
+            "zoom": 2
+        },
+        {
+            "name": "Graveyard",
+            "start_x": 2248,
+            "start_y": 2454,
+            "end_x": 2504,
+            "end_y": 2742,
+            "zoom": 2
+        },
+        {
+            "name": "Hyrule Castle",
+            "start_x": 1735,
+            "start_y": 2969,
+            "end_x": 2503,
+            "end_y": 3769,
+            "zoom": 2
+        },
+        {
+            "name": "2",
+            "start_x": 1734,
+            "start_y": 3996,
+            "end_x": 1990,
+            "end_y": 4284,
+            "zoom": 2
+        },
+        {
+            "name": "Link's House",
+            "start_x": 2248,
+            "start_y": 3996,
+            "end_x": 2504,
+            "end_y": 4284,
+            "zoom": 2
+        },
+        {
+            "name": "Great Swamp Whirlpool Waterway",
+            "start_x": 1734,
+            "start_y": 4510,
+            "end_x": 1990,
+            "end_y": 4798,
+            "zoom": 2
+        },
+        {
+            "name": "Great Swamp",
+            "start_x": 2248,
+            "start_y": 4510,
+            "end_x": 2504,
+            "end_y": 4798,
+            "zoom": 2
+        },
+        {
+            "name": "Swamp Ruins",
+            "start_x": 1734,
+            "start_y": 5024,
+            "end_x": 1990,
+            "end_y": 5295,
+            "zoom": 2
+        },
+        {
+            "name": "3",
+            "start_x": 2248,
+            "start_y": 5024,
+            "end_x": 2504,
+            "end_y": 5295,
+            "zoom": 2
+        },
+        {
+            "name": "Death Mountain",
+            "start_x": 2763,
+            "start_y": 1427,
+            "end_x": 3531,
+            "end_y": 2227,
+            "zoom": 2
+        },
+        {
+            "name": "North Hyrule Fairy Fountain Cave",
+            "start_x": 2762,
+            "start_y": 2454,
+            "end_x": 3018,
+            "end_y": 2742,
+            "zoom": 2
+        },
+        {
+            "name": "Magic Shop",
+            "start_x": 3276,
+            "start_y": 2454,
+            "end_x": 3532,
+            "end_y": 2742,
+            "zoom": 2
+        },
+        {
+            "name": "Magic Shop Bridge",
+            "start_x": 2762,
+            "start_y": 2968,
+            "end_x": 3018,
+            "end_y": 3256,
+            "zoom": 2
+        },
+        {
+            "name": "Mystery Rock",
+            "start_x": 2762,
+            "start_y": 3482,
+            "end_x": 3018,
+            "end_y": 3770,
+            "zoom": 2
+        },
+        {
+            "name": "Lac Hylia Bridge",
+            "start_x": 2762,
+            "start_y": 3996,
+            "end_x": 3018,
+            "end_y": 4284,
+            "zoom": 2
+        },
+        {
+            "name": "Eastern Ruins Fairy Fountain",
+            "start_x": 3276,
+            "start_y": 3996,
+            "end_x": 3532,
+            "end_y": 4284,
+            "zoom": 2
+        },
+        {
+            "name": "Lake Hylia",
+            "start_x": 2763,
+            "start_y": 4511,
+            "end_x": 3531,
+            "end_y": 5295,
+            "zoom": 2
+        },
+        {
+            "name": "Dark World Warp",
+            "start_x": 3790,
+            "start_y": 1426,
+            "end_x": 4032,
+            "end_y": 1714,
+            "zoom": 2
+        },
+        {
+            "name": "Access Zora's Domain",
+            "start_x": 3790,
+            "start_y": 1940,
+            "end_x": 4032,
+            "end_y": 2228,
+            "zoom": 2
+        },
+        {
+            "name": "Waterfall",
+            "start_x": 3790,
+            "start_y": 2454,
+            "end_x": 4032,
+            "end_y": 2742,
+            "zoom": 2
+        },
+        {
+            "name": "Sahasrahla's Hideout",
+            "start_x": 3277,
+            "start_y": 2969,
+            "end_x": 4032,
+            "end_y": 3769,
+            "zoom": 2
+        },
+        {
+            "name": "East Hyrule Fairy Fountain",
+            "start_x": 3790,
+            "start_y": 3996,
+            "end_x": 4032,
+            "end_y": 4284,
+            "zoom": 2
+        },
+        {
+            "name": "Lake Hylia Thief's Hideout",
+            "start_x": 3790,
+            "start_y": 4510,
+            "end_x": 4032,
+            "end_y": 4798,
+            "zoom": 2
+        },
+        {
+            "name": "Lake Hylia Whirlpool Waterway",
+            "start_x": 3790,
+            "start_y": 5024,
+            "end_x": 4032,
+            "end_y": 5295,
+            "zoom": 2
+        }
+    ]
+}
