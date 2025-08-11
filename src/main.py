@@ -1,5 +1,8 @@
 import pygame
+
 from maps.MapLoader import MapLoader
+from utils.JsonLoader import JsonLoader
+from core.Camera import Camera
 
 pygame.init()
 
@@ -12,7 +15,11 @@ class Game:
         self.screen = pygame.display.set_mode((WIDTH * SCALE, HEIGHT * SCALE))
         self.clock = pygame.time.Clock()
 
-        self.map = MapLoader("../maps/main.tmx", self.screen)
+        self.data = JsonLoader("../data/camera_pos.json").load_json()
+        self.camera = Camera(self.data, self.screen)
+        self.camera_rect = self.camera.create_camera(2)
+
+        self.map = MapLoader("../maps/main.tmx", self.screen, self.camera_rect)
         self.map.load_map()
         self.map.add_group()
 
@@ -24,6 +31,8 @@ class Game:
                 if event.type == pygame.QUIT:
                     running = False
 
+
+            self.camera.update()
             self.map.draw_map()
 
             pygame.display.flip()
