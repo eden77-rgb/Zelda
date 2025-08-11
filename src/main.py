@@ -1,27 +1,35 @@
 import pygame
-import pytmx
-import pyscroll
+from maps.MapLoader import MapLoader
+
 pygame.init()
 
 WIDTH = 256
 HEIGHT = 224
 SCALE = 2
 
-screen = pygame.display.set_mode((WIDTH * SCALE, HEIGHT * SCALE))
+class Game:
+    def __init__(self):
+        self.screen = pygame.display.set_mode((WIDTH * SCALE, HEIGHT * SCALE))
+        self.clock = pygame.time.Clock()
 
-tmx_data = pytmx.util_pygame.load_pygame("../maps/main.tmx")
-map_data = pyscroll.TiledMapData(tmx_data)
-map_layer = pyscroll.BufferedRenderer(map_data, screen.get_size(), clamp_camera=False)
+        self.map = MapLoader("../maps/main.tmx", self.screen)
+        self.map.load_map()
+        self.map.add_group()
 
-group = pyscroll.PyscrollGroup(map_layer=map_layer)
-group.draw(screen)
 
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+    def run(self):
+        running = True
+        while running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
 
-    pygame.display.flip()
+            self.map.draw_map()
 
-pygame.quit()
+            pygame.display.flip()
+            self.clock.tick(60)
+
+        pygame.quit()
+
+if __name__ == "__main__":
+    Game().run()
