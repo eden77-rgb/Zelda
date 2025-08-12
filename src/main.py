@@ -3,6 +3,7 @@ import pygame
 from maps.MapLoader import MapLoader
 from utils.JsonLoader import JsonLoader
 from core.Camera import Camera
+from core.Player import Player
 
 pygame.init()
 
@@ -17,11 +18,15 @@ class Game:
 
         self.data = JsonLoader("../data/camera_pos.json").load_json()
         self.camera = Camera(self.data, self.screen)
-        self.camera_rect = self.camera.create_camera(2)
+        self.camera_rect = self.camera.create_camera(21)
 
         self.map = MapLoader("../maps/main.tmx", self.screen, self.camera_rect)
         self.map.load_map()
         self.map.add_group()
+
+        self.player = Player(2560, 4362)
+
+        self.map.group.add(self.player)
 
 
     def run(self):
@@ -31,8 +36,11 @@ class Game:
                 if event.type == pygame.QUIT:
                     running = False
 
+            self.player.update()
 
-            self.camera.update()
+            self.camera.center(self.player)
+            # self.camera.update()
+            
             self.map.draw_map()
 
             pygame.display.flip()

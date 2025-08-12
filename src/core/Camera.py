@@ -23,6 +23,16 @@ class Camera:
         return self.camera_rect
     
 
+    def center(self, player):
+        center_x = player.x - self.screen.get_width() // 2
+        center_y = player.y - self.screen.get_height() // 2
+
+        self.x = max(self.start_x, min(center_x, self.end_x))
+        self.y = max(self.start_y, min(center_y, self.end_y))
+
+        self.camera_rect.topleft = (self.x, self.y)
+
+
     def update(self):
         keys = pygame.key.get_pressed()
 
