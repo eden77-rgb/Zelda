@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="144" height="176" tilewidth="32" tileheight="32" infinite="0" nextlayerid="2" nextobjectid="1">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="144" height="176" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="153">
  <tileset firstgid="1" source="../assets/tilesets/main-carte.tsx"/>
  <layer id="1" name="Calque de Tuiles 1" width="144" height="176">
   <data encoding="csv">
@@ -181,4 +181,114 @@
 0,0,0,0,0,0,0,0,0,0,20353,20354,20355,20356,20357,20358,20359,20360,20361,20362,20363,20364,20365,20366,20367,20368,20369,20370,20371,20372,20373,20374,20375,20376,20377,20378,20379,20380,20381,20382,20383,20384,20385,20386,20387,20388,20389,20390,20391,20392,20393,20394,20395,20396,20397,20398,20399,20400,20401,20402,20403,20404,20405,20406,20407,20408,20409,20410,20411,20412,20413,20414,20415,20416,20417,20418,20419,20420,20421,20422,20423,20424,20425,20426,20427,20428,20429,20430,20431,20432,20433,20434,20435,20436,20437,20438,20439,20440,20441,20442,20443,20444,20445,20446,20447,20448,20449,20450,20451,20452,20453,20454,20455,20456,20457,20458,20459,20460,20461,20462,20463,20464,20465,20466,20467,20468,20469,20470,20471,20472,20473,20474,20475,20476,20477,20478,20479,20480,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="2" name="collision">
+  <object id="9" name="collision" type="collision" x="2368" y="4448" width="64" height="32"/>
+  <object id="10" name="collision" type="collision" x="2496" y="4448" width="160" height="32"/>
+  <object id="13" name="collision" type="collision" x="2656" y="4288" width="24.3333" height="159.667"/>
+  <object id="14" name="collision" type="collision" x="2496.33" y="4227" width="124" height="16"/>
+  <object id="17" name="collision" type="collision" x="2457" y="4265.33" width="19" height="51.3333"/>
+  <object id="18" name="collision" type="collision" x="2519.88" y="4283.75" width="32.25" height="96.125"/>
+  <object id="19" name="collision" type="collision" x="2584" y="4283.88" width="32.125" height="96"/>
+  <object id="20" name="collision" type="collision" x="2552.25" y="4283.5" width="31.75" height="69.125"/>
+  <object id="23" name="collision" type="collision" x="2374.73" y="4340" width="57.2727" height="12"/>
+  <object id="24" name="collision" type="collision" x="2368" y="4224" width="32" height="64"/>
+  <object id="25" name="collision" type="collision" x="2400" y="4224" width="16" height="58.3636"/>
+  <object id="26" name="collision" type="collision" x="2368" y="4128" width="64" height="96"/>
+  <object id="27" name="collision" type="collision" x="2368" y="4096" width="160" height="32"/>
+  <object id="28" name="collision" type="collision" x="2432" y="4128" width="64" height="32"/>
+  <object id="29" name="collision" type="collision" x="2432" y="4160" width="64" height="20"/>
+  <object id="30" name="collision" type="collision" x="2496" y="4127.82" width="16.7273" height="32.1818"/>
+  <object id="32" name="collision" type="collision" x="2376.5" y="4548.5" width="70.75" height="11.5"/>
+  <object id="33" name="collision" type="collision" x="2467.25" y="4532.25" width="23.5" height="11.75"/>
+  <object id="34" name="collision" type="collision" x="2511.5" y="4548.5" width="28.75" height="12"/>
+  <object id="39" name="collision" type="collision" x="2688" y="4544" width="200.5" height="16.5"/>
+  <object id="42" name="collision" type="collision" x="2632.75" y="4586.75" width="32.75" height="32.5"/>
+  <object id="44" name="collision" type="collision" x="2562.5" y="4586.5" width="21" height="33.25"/>
+  <object id="45" name="collision" type="collision" x="2880" y="4448" width="8.25" height="32.75"/>
+  <object id="46" name="collision" type="collision" x="2792.25" y="4320" width="32" height="75.75"/>
+  <object id="51" name="collision" type="collision" x="2761.25" y="4206" width="30.25" height="81.75"/>
+  <object id="52" name="collision" type="collision" x="2824.25" y="4108.25" width="31.75" height="33.75"/>
+  <object id="58" name="collision" type="collision" x="2488.91" y="4438.91" width="7.08696" height="20.8261"/>
+  <object id="66" name="collision" type="collision" x="2431.63" y="4440" width="6.75" height="21.375"/>
+  <object id="70" name="collision" type="collision" x="2424" y="4365.98" width="7.97778" height="12.9556"/>
+  <object id="71" name="collision" type="collision" x="2432" y="4366.96" width="8.04444" height="5.04444"/>
+  <object id="72" name="collision" type="collision" x="2440.02" y="4366.04" width="7.97778" height="12.9778"/>
+  <object id="73" name="collision" type="collision" x="2448.02" y="4358" width="7.95556" height="12.0444"/>
+  <object id="74" name="collision" type="collision" x="2456" y="4350" width="7.97778" height="12"/>
+  <object id="75" name="collision" type="collision" x="2464.02" y="4342" width="7.91111" height="12.0222"/>
+  <object id="76" name="collision" type="collision" x="2472.02" y="4333.98" width="7.95556" height="11.9778"/>
+  <object id="77" name="collision" type="collision" x="2479.96" y="4325.98" width="8" height="12.0444"/>
+  <object id="78" name="collision" type="collision" x="2487.98" y="4318.02" width="8" height="11.9556"/>
+  <object id="79" name="collision" type="collision" x="2488.02" y="4301.96" width="7.93333" height="12"/>
+  <object id="80" name="collision" type="collision" x="2489.98" y="4313.91" width="3.97778" height="4.04444"/>
+  <object id="81" name="collision" type="collision" x="2488.02" y="4286.04" width="8" height="12"/>
+  <object id="82" name="collision" type="collision" x="2489.96" y="4298" width="4" height="3.88889"/>
+  <object id="83" name="collision" type="collision" x="2447.22" y="4550.5" width="9.625" height="8.28125"/>
+  <object id="84" name="collision" type="collision" x="2456.83" y="4541.7" width="10.2609" height="8.56522"/>
+  <object id="85" name="collision" type="collision" x="2462.57" y="4536.35" width="4.6087" height="5.08696"/>
+  <object id="86" name="collision" type="collision" x="2452.09" y="4545.57" width="4.73913" height="4.69565"/>
+  <object id="87" name="collision" type="collision" x="2490.94" y="4537.06" width="7.75" height="11.25"/>
+  <object id="88" name="collision" type="collision" x="2498.38" y="4542.56" width="6.5" height="12.0625"/>
+  <object id="89" name="collision" type="collision" x="2504.88" y="4549.13" width="6.4375" height="10.9375"/>
+  <object id="90" name="collision" type="collision" x="2540.13" y="4551.94" width="6.5625" height="11.75"/>
+  <object id="91" name="collision" type="collision" x="2546.69" y="4557.06" width="5.625" height="13.8125"/>
+  <object id="92" name="collision" type="collision" x="2552.5" y="4563.25" width="5.5" height="12.3125"/>
+  <object id="93" name="collision" type="collision" x="2557.81" y="4568.31" width="5.9375" height="13.9375"/>
+  <object id="94" name="collision" type="collision" x="2563.88" y="4573.75" width="4.25" height="9.25"/>
+  <object id="95" name="collision" type="collision" x="2568.56" y="4578.31" width="5.5" height="8.3125"/>
+  <object id="96" name="collision" type="collision" x="2559.63" y="4582.31" width="8.6875" height="3.9375"/>
+  <object id="97" name="collision" type="collision" x="2642.31" y="4579.31" width="23.25" height="7.3125"/>
+  <object id="98" name="collision" type="collision" x="2649.5" y="4572.81" width="27.6875" height="6.3125"/>
+  <object id="99" name="collision" type="collision" x="2656.75" y="4565.94" width="26.0625" height="6.8125"/>
+  <object id="100" name="collision" type="collision" x="2678.13" y="4543.69" width="9.75" height="22.1875"/>
+  <object id="101" name="collision" type="collision" x="2669.56" y="4550.44" width="8.375" height="15.3125"/>
+  <object id="102" name="collision" type="collision" x="2661.81" y="4559.19" width="7.5" height="6.4375"/>
+  <object id="103" name="collision" type="collision" x="2868.88" y="4451.25" width="10.75" height="27"/>
+  <object id="104" name="collision" type="collision" x="2860.5" y="4440.75" width="8.25" height="29.5"/>
+  <object id="105" name="collision" type="collision" x="2850.25" y="4433.5" width="10.125" height="28.875"/>
+  <object id="106" name="collision" type="collision" x="2841.25" y="4420.88" width="8.625" height="33.125"/>
+  <object id="107" name="collision" type="collision" x="2833.38" y="4412.25" width="7.25" height="31.875"/>
+  <object id="108" name="collision" type="collision" x="2827.5" y="4401.13" width="5.375" height="36.125"/>
+  <object id="109" name="collision" type="collision" x="2819.88" y="4396" width="7" height="36.125"/>
+  <object id="110" name="collision" type="collision" x="2811.25" y="4395.63" width="7.875" height="28.625"/>
+  <object id="111" name="collision" type="collision" x="2803.63" y="4395.5" width="7.75" height="20.25"/>
+  <object id="112" name="collision" type="collision" x="2796.25" y="4396" width="7" height="11.5"/>
+  <object id="113" name="collision" type="collision" x="2761.63" y="4287.5" width="29.625" height="4.125"/>
+  <object id="114" name="collision" type="collision" x="2767" y="4291.25" width="31.375" height="5.125"/>
+  <object id="115" name="collision" type="collision" x="2772.5" y="4296.63" width="35.125" height="6"/>
+  <object id="116" name="collision" type="collision" x="2781.38" y="4302.38" width="31.5" height="8"/>
+  <object id="117" name="collision" type="collision" x="2787.38" y="4310.13" width="36.25" height="9.75"/>
+  <object id="119" name="collision" type="collision" x="2763.75" y="4197.5" width="40.75" height="8.25"/>
+  <object id="120" name="collision" type="collision" x="2772.63" y="4189.75" width="42.875" height="7.25"/>
+  <object id="121" name="collision" type="collision" x="2782" y="4181" width="37.25" height="8.25"/>
+  <object id="122" name="collision" type="collision" x="2788.13" y="4174.38" width="44.625" height="6.125"/>
+  <object id="123" name="collision" type="collision" x="2796.38" y="4165.88" width="42.25" height="7.75"/>
+  <object id="124" name="collision" type="collision" x="2805.38" y="4157.75" width="39.5" height="8"/>
+  <object id="125" name="collision" type="collision" x="2813.13" y="4149.75" width="40.375" height="7.5"/>
+  <object id="126" name="collision" type="collision" x="2819.25" y="4141.5" width="38.25" height="7.375"/>
+  <object id="127" name="collision" type="collision" x="2620.25" y="4230.13" width="6.875" height="18.75"/>
+  <object id="128" name="collision" type="collision" x="2626.75" y="4237.13" width="6.625" height="19.375"/>
+  <object id="129" name="collision" type="collision" x="2633.25" y="4241.63" width="5.5" height="18.875"/>
+  <object id="130" name="collision" type="collision" x="2638.88" y="4248.63" width="5.125" height="15.875"/>
+  <object id="131" name="collision" type="collision" x="2644" y="4254.38" width="4.375" height="15.75"/>
+  <object id="132" name="collision" type="collision" x="2648.75" y="4258.88" width="4.375" height="16.25"/>
+  <object id="133" name="collision" type="collision" x="2652.75" y="4262" width="4.25" height="20.125"/>
+  <object id="134" name="collision" type="collision" x="2657.25" y="4268.25" width="4.5" height="19.875"/>
+  <object id="135" name="collision" type="collision" x="2661.5" y="4272.25" width="3.875" height="15.375"/>
+  <object id="136" name="collision" type="collision" x="2665" y="4282.63" width="10" height="4.875"/>
+  <object id="137" name="collision" type="collision" x="2665.25" y="4277" width="5.625" height="6"/>
+  <object id="138" name="collision" type="collision" x="2656.13" y="4447.38" width="11.75" height="17.75"/>
+  <object id="139" name="collision" type="collision" x="2667.75" y="4447.88" width="7.875" height="10.625"/>
+  <object id="140" name="collision" type="collision" x="2656.13" y="4465" width="7.5" height="7"/>
+  <object id="141" name="collision" type="collision" x="2432.25" y="4336.88" width="7.25" height="15.375"/>
+  <object id="142" name="collision" type="collision" x="2440" y="4330" width="6.875" height="14.25"/>
+  <object id="143" name="collision" type="collision" x="2447.25" y="4321.13" width="6.625" height="17.375"/>
+  <object id="145" name="collision" type="collision" x="2453.88" y="4316.75" width="8.25" height="16.75"/>
+  <object id="146" name="collision" type="collision" x="2461.5" y="4316.88" width="7" height="7.875"/>
+  <object id="148" name="collision" type="collision" x="2491.63" y="4231.25" width="4.5" height="19.125"/>
+  <object id="149" name="collision" type="collision" x="2486.75" y="4238.13" width="4" height="18.875"/>
+  <object id="150" name="collision" type="collision" x="2481.25" y="4244.5" width="5.375" height="14.625"/>
+  <object id="151" name="collision" type="collision" x="2475" y="4248.75" width="5.75" height="16.75"/>
+  <object id="152" name="collision" type="collision" x="2468.88" y="4255.25" width="5.5" height="9.75"/>
+ </objectgroup>
 </map>

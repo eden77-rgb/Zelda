@@ -24,7 +24,7 @@ class Game:
         self.map.load_map()
         self.map.add_group()
 
-        self.player = Player(2560, 4362)
+        self.player = Player(2560, 4362, self.map.collision_objects)
 
         self.map.group.add(self.player)
 

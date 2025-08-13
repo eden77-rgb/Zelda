@@ -1,3 +1,4 @@
+import pygame
 import pytmx
 import pyscroll
 
@@ -18,6 +19,8 @@ class MapLoader:
         self.map_layer = pyscroll.BufferedRenderer(self.map_data, self.screen.get_size(), clamp_camera=False)
         self.map_layer.zoom = round(self.zoom, 1)
 
+        self.collision_objects = self.get_collision_objects()
+
 
     def add_group(self):
         self.group = pyscroll.PyscrollGroup(map_layer=self.map_layer)
@@ -27,3 +30,17 @@ class MapLoader:
         self.map_layer.zoom = round(self.zoom, 1)
         self.map_layer.center(self.camera_rect.center)
         self.group.draw(self.screen)
+
+
+    def get_collision_objects(self):
+        collision_objects = []
+
+        for layer  in self.tmx_data.layers:
+            if hasattr(layer, "name") and layer.name == "collision":
+                for obj in layer:
+
+                    rect = pygame.Rect(obj.x, obj.y, obj.width, obj.height)
+                    collision_objects.append(rect)
+
+        return collision_objects
+         
