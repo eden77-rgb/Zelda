@@ -41,6 +41,7 @@ class Game:
             self.camera.center(self.player)
             # self.camera.update()
             
+            self.map.group.update()
             self.map.draw_map()
 
             pygame.display.flip()

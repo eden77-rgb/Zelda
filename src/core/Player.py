@@ -1,5 +1,7 @@
 import pygame
 
+from core.Sword import Sword
+
 IDLE = (1, 3, 16, 24)
 
 WALK_UP =  [
@@ -43,6 +45,8 @@ class Player(pygame.sprite.Sprite):
         self.image = self.get_image(IDLE[0], IDLE[1], IDLE[2], IDLE[3])
         self.rect = self.image.get_rect()
 
+        self.sword = Sword(self)
+
         self.animation_up = self.get_animation_up()
         self.animation_left = self.get_animation_left()
         self.animation_down = self.get_animation_down()
@@ -62,7 +66,7 @@ class Player(pygame.sprite.Sprite):
 
 
     def get_image(self, x, y, width, height):
-        image = pygame.Surface((16, 24))
+        image = pygame.Surface((width, height))
         image.blit(self.sprite_sheet, (0, 0), (x, y, width, height))
 
         image.set_colorkey(image.get_at((0,0)))
@@ -124,6 +128,8 @@ class Player(pygame.sprite.Sprite):
         keys = pygame.key.get_pressed()
         moving = False
 
+        self.attack_input()
+
         if keys[pygame.K_z]:
             self.move(0, -1)
             
@@ -182,4 +188,18 @@ class Player(pygame.sprite.Sprite):
 
 
         print("X: ", self.x, "Y: ", self.y)
+    
+
+    def attack_input(self):
+        keys = pygame.key.get_pressed()
+
+        for group in self.groups():
+            if keys[pygame.K_SPACE]:
+                print("[ESPACE]: préssé")
+                if self.sword not in group:
+                    group.add(self.sword)
+
+            else:
+                if self.sword in group:
+                    group.remove(self.sword)
     
