@@ -1,7 +1,6 @@
 import pygame
 
 SWORD_UP = {
-    "rotation": 0,
     "frames": [
         (1, 269, 8, 16),
         (10, 269, 8, 16),
@@ -10,6 +9,15 @@ SWORD_UP = {
         (45, 269, 16, 16),
         (62, 277, 16, 8),
         (79, 277, 16, 8)
+    ],
+    "position": [
+        (20, 10),
+        (20, 10),
+        (20, 10),
+        (20, 10),
+        (20, 10),
+        (20, 10),
+        (20, 10)
     ]
 }
 
@@ -33,5 +41,5 @@ class Sword(pygame.sprite.Sprite):
     
 
     def update(self):
-        self.rect.x = self.player.rect.x + 20
-        self.rect.y = self.player.rect.y + 10
+        self.rect.x = self.player.rect.topleft[0] + SWORD_UP["position"][0][0]
+        self.rect.y = self.player.rect.topleft[1] + SWORD_UP["position"][0][1]
