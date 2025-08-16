@@ -24,6 +24,7 @@ class Animation:
 
 
     def update(self, loop=True):
+        print("update")
         self.frame_index += self.speed
         if self.frame_index >= len(self.frames):
             if loop:
@@ -36,7 +37,7 @@ class Animation:
     
 
     def reset(self):
-        self.index = 0
+        self.frame_index  = 0
         return self.frames[0]
     
 

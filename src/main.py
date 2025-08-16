@@ -26,7 +26,7 @@ class Game:
 
         self.player = Player(2560, 4362, self.map.collision_objects)
 
-        self.map.group.add(self.player)
+        self.map.group.add(self.player, layer=1)
 
 
     def run(self):

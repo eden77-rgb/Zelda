@@ -90,10 +90,10 @@ class Player(pygame.sprite.Sprite):
             "down": Animation(self.sprite_sheet, WALK_DOWN, 0.10),
             "right": Animation(self.sprite_sheet, WALK_RIGHT, 0.10),
 
-            "attack_up": Animation(self.sprite_sheet, ATTACK_UP, 0.10),
-            "attack_left": Animation(self.sprite_sheet, ATTACK_LEFT, 0.10, True),
-            "attack_down": Animation(self.sprite_sheet, ATTACK_DOWN, 0.10),
-            "attack_right": Animation(self.sprite_sheet, ATTACK_RIGHT, 0.10)
+            "attack_up": Animation(self.sprite_sheet, ATTACK_UP, 0.01),
+            "attack_left": Animation(self.sprite_sheet, ATTACK_LEFT, 0.01, True),
+            "attack_down": Animation(self.sprite_sheet, ATTACK_DOWN, 0.01),
+            "attack_right": Animation(self.sprite_sheet, ATTACK_RIGHT, 0.01)
         }
         
         self.last_direction = "down"
@@ -136,11 +136,15 @@ class Player(pygame.sprite.Sprite):
         self.attack_input()
 
         if self.is_attacking:
-            self.image = self.animations[self.current_animation].update()
+            anim = self.animations[self.current_animation]
+            self.image = anim.update(loop=False)
 
-            if self.animations[self.current_animation].is_finished():
+            if anim.is_finished():
                 self.is_attacking = False
                 self.current_animation = self.last_direction
+                
+                anim.reset()
+                self.sword.current_animation.reset()
                 self.time = current_time
 
             return
@@ -194,7 +198,7 @@ class Player(pygame.sprite.Sprite):
             self.image = self.animations[self.current_animation].reset()
 
 
-        print("X: ", self.x, "Y: ", self.y)
+        #print("X: ", self.x, "Y: ", self.y)
     
 
     def attack_input(self):
@@ -203,7 +207,7 @@ class Player(pygame.sprite.Sprite):
         for group in self.groups():
             if self.is_attacking:
                 if self.sword not in group:
-                    group.add(self.sword)
+                    group.add(self.sword, layer=0)
                     
             else:
                 if self.sword in group:
