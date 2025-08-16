@@ -37,7 +37,6 @@ WALK_RIGHT = [
 ATTACK_UP = [
     (1, 141, 16, 24),
     (18, 140, 16, 25),
-    (35, 139, 16, 26),
     (52, 136, 16, 29),
     (69, 139, 16, 26),
     (86, 141, 16, 24),
@@ -45,7 +44,6 @@ ATTACK_UP = [
 ]
 
 ATTACK_LEFT = [
-    (1, 85, 17, 23),
     (19, 85, 17, 23),
     (37, 86, 19, 22),
     (57, 86, 23, 22),
@@ -65,7 +63,6 @@ ATTACK_DOWN = [
 ATTACK_RIGHT = [
     (1, 85, 17, 23),
     (19, 85, 17, 23),
-    (37, 86, 19, 22),
     (57, 86, 23, 22),
     (81, 86, 19, 22),
     (101, 85, 16, 23)
@@ -90,10 +87,10 @@ class Player(pygame.sprite.Sprite):
             "down": Animation(self.sprite_sheet, WALK_DOWN, 0.10),
             "right": Animation(self.sprite_sheet, WALK_RIGHT, 0.10),
 
-            "attack_up": Animation(self.sprite_sheet, ATTACK_UP, 0.01),
-            "attack_left": Animation(self.sprite_sheet, ATTACK_LEFT, 0.01, True),
-            "attack_down": Animation(self.sprite_sheet, ATTACK_DOWN, 0.01),
-            "attack_right": Animation(self.sprite_sheet, ATTACK_RIGHT, 0.01)
+            "attack_up": Animation(self.sprite_sheet, ATTACK_UP, 0.20), # 0.10
+            "attack_left": Animation(self.sprite_sheet, ATTACK_LEFT, 0.20, True),
+            "attack_down": Animation(self.sprite_sheet, ATTACK_DOWN, 0.20),
+            "attack_right": Animation(self.sprite_sheet, ATTACK_RIGHT, 0.20)
         }
         
         self.last_direction = "down"
@@ -142,7 +139,7 @@ class Player(pygame.sprite.Sprite):
             if anim.is_finished():
                 self.is_attacking = False
                 self.current_animation = self.last_direction
-                
+
                 anim.reset()
                 self.sword.current_animation.reset()
                 self.time = current_time
@@ -202,13 +199,16 @@ class Player(pygame.sprite.Sprite):
     
 
     def attack_input(self):
-        keys = pygame.key.get_pressed()
-
         for group in self.groups():
             if self.is_attacking:
                 if self.sword not in group:
-                    group.add(self.sword, layer=0)
-                    
+                    layer = self.sword.get_current_layer()
+                    group.add(self.sword, layer=layer)
+
+                else:
+                    current_layer = self.sword.get_current_layer()
+                    group.change_layer(self.sword, current_layer)
+
             else:
                 if self.sword in group:
                     group.remove(self.sword)
