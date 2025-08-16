@@ -36,7 +36,6 @@ class Game:
                 if event.type == pygame.QUIT:
                     running = False
 
-            self.player.update()
 
             self.camera.center(self.player)
             # self.camera.update()

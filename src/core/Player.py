@@ -34,6 +34,44 @@ WALK_RIGHT = [
 ]
 
 
+ATTACK_UP = [
+    (1, 141, 16, 24),
+    (18, 140, 16, 25),
+    (35, 139, 16, 26),
+    (52, 136, 16, 29),
+    (69, 139, 16, 26),
+    (86, 141, 16, 24),
+    (104, 141, 16, 24)
+]
+
+ATTACK_LEFT = [
+    (1, 85, 17, 23),
+    (19, 85, 17, 23),
+    (37, 86, 19, 22),
+    (57, 86, 23, 22),
+    (81, 86, 19, 22),
+    (101, 85, 16, 23)
+]
+
+ATTACK_DOWN = [
+    (1, 32, 16, 24),
+    (18, 33, 16, 23),
+    (35, 34, 16, 22),
+    (52, 37, 16, 19),
+    (69, 34, 16, 22),
+    (86, 33, 16, 23)
+]
+
+ATTACK_RIGHT = [
+    (1, 85, 17, 23),
+    (19, 85, 17, 23),
+    (37, 86, 19, 22),
+    (57, 86, 23, 22),
+    (81, 86, 19, 22),
+    (101, 85, 16, 23)
+]
+
+
 class Player(pygame.sprite.Sprite):
     def __init__(self, x, y, collision_layer):
         super().__init__()
@@ -46,16 +84,27 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.Surface((16, 24))
         self.rect = self.image.get_rect()
 
-        self.sword = Sword(self)
-
         self.animations = {
             "up": Animation(self.sprite_sheet, WALK_UP, 0.10),
             "left": Animation(self.sprite_sheet, WALK_LEFT, 0.10, True),
             "down": Animation(self.sprite_sheet, WALK_DOWN, 0.10),
-            "right": Animation(self.sprite_sheet, WALK_RIGHT, 0.10)
+            "right": Animation(self.sprite_sheet, WALK_RIGHT, 0.10),
+
+            "attack_up": Animation(self.sprite_sheet, ATTACK_UP, 0.10),
+            "attack_left": Animation(self.sprite_sheet, ATTACK_LEFT, 0.10, True),
+            "attack_down": Animation(self.sprite_sheet, ATTACK_DOWN, 0.10),
+            "attack_right": Animation(self.sprite_sheet, ATTACK_RIGHT, 0.10)
         }
         
         self.last_direction = "down"
+        self.current_animation = self.last_direction
+
+        self.is_attacking = False
+        self.time = 0
+        self.cooldown = 0.010
+
+        self.sword = Sword(self)
+
         self.rect.topleft = (self.x, self.y)
     
 
@@ -82,38 +131,67 @@ class Player(pygame.sprite.Sprite):
         keys = pygame.key.get_pressed()
         moving = False
 
+        current_time = pygame.time.get_ticks() / 1000
+
         self.attack_input()
+
+        if self.is_attacking:
+            self.image = self.animations[self.current_animation].update()
+
+            if self.animations[self.current_animation].is_finished():
+                self.is_attacking = False
+                self.current_animation = self.last_direction
+                self.time = current_time
+
+            return
+        
 
         if keys[pygame.K_z]:
             self.move(0, -1)
             
             self.last_direction = "up"
+            self.current_animation = self.last_direction
             moving = True
 
         if keys[pygame.K_q]:
             self.move(-1, 0)
             
             self.last_direction = "left"
+            self.current_animation = self.last_direction
             moving = True
 
         if keys[pygame.K_s]:
             self.move(0, 1)
             
             self.last_direction = "down"
+            self.current_animation = self.last_direction
             moving = True
 
         if keys[pygame.K_d]:
             self.move(1, 0)
             
             self.last_direction = "right"
+            self.current_animation = self.last_direction
             moving = True
 
 
+        if keys[pygame.K_SPACE] and not self.is_attacking:
+            if current_time - self.time >= self.cooldown:
+                self.is_attacking = True
+
+                self.sword.set_direction(self.last_direction)
+
+                self.current_animation = "attack_" + self.last_direction
+                self.image = self.animations[self.current_animation].update()
+
+                return
+
+
         if moving:
-            self.image = self.animations[self.last_direction].update()
+            self.image = self.animations[self.current_animation].update(True)
 
         else:
-            self.image = self.animations[self.last_direction].reset()
+            self.image = self.animations[self.current_animation].reset()
 
 
         print("X: ", self.x, "Y: ", self.y)
@@ -123,11 +201,10 @@ class Player(pygame.sprite.Sprite):
         keys = pygame.key.get_pressed()
 
         for group in self.groups():
-            if keys[pygame.K_SPACE]:
-                print("[ESPACE]: préssé")
+            if self.is_attacking:
                 if self.sword not in group:
                     group.add(self.sword)
-
+                    
             else:
                 if self.sword in group:
                     group.remove(self.sword)

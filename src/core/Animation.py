@@ -23,10 +23,14 @@ class Animation:
         return image
 
 
-    def update(self):
+    def update(self, loop=True):
         self.frame_index += self.speed
         if self.frame_index >= len(self.frames):
-            self.frame_index = 0
+            if loop:
+                self.frame_index = 0
+
+            else:
+                self.frame_index = len(self.frames) - 1
 
         return self.frames[int(self.frame_index)]
     
@@ -34,3 +38,7 @@ class Animation:
     def reset(self):
         self.index = 0
         return self.frames[0]
+    
+
+    def is_finished(self):
+        return self.frame_index >= len(self.frames) - 1

@@ -1,4 +1,5 @@
 import pygame
+from core.Animation import Animation
 
 SWORD_UP = {
     "frames": [
@@ -21,25 +22,52 @@ SWORD_UP = {
     ]
 }
 
+
 class Sword(pygame.sprite.Sprite):
     def __init__(self, player):
         super().__init__()
 
         self.player = player
-
         self.sprite_sheet = pygame.image.load("../assets/sprites/Link.png")
-        self.image = self.get_image(*SWORD_UP["frames"][0])
+
+        self.animations = {
+            "up": Animation(self.sprite_sheet, SWORD_UP["frames"], 0.20),
+            "left": Animation(self.sprite_sheet, SWORD_UP["frames"], 0.20),
+            "down": Animation(self.sprite_sheet, SWORD_UP["frames"], 0.20),
+            "right": Animation(self.sprite_sheet, SWORD_UP["frames"], 0.20)
+        }
+
+        self.sword_data = {
+            "up": SWORD_UP,
+            "left": SWORD_UP,
+            "down": SWORD_UP,
+            "right": SWORD_UP
+        }
+
+        self.current_direction = "down"
+        self.current_animation = self.animations[self.current_direction]
+        self.current_positions = self.sword_data[self.current_direction]["position"]
+
+        self.image = self.current_animation.reset()
         self.rect = self.image.get_rect()
 
 
-    def get_image(self, x, y, width, height):
-        image = pygame.Surface((width, height))
-        image.blit(self.sprite_sheet, (0, 0), (x, y, width, height))
+    def set_direction(self, direction):
+        if direction in self.animations:
+            self.current_direction = direction
+            self.current_animation = self.animations[direction]
+            self.current_positions = self.sword_data[direction]["position"]
 
-        image.set_colorkey(image.get_at((0,0)))
-        return image
+            self.current_animation.frame_index = 0
     
 
     def update(self):
-        self.rect.x = self.player.rect.topleft[0] + SWORD_UP["position"][0][0]
-        self.rect.y = self.player.rect.topleft[1] + SWORD_UP["position"][0][1]
+        self.image = self.current_animation.update(loop=False)
+        
+        frame_index = int(self.current_animation.frame_index)
+        if frame_index >= len(self.current_positions):
+            frame_index = len(self.current_positions) - 1
+        
+        offset_x, offset_y = self.current_positions[frame_index]
+        self.rect.x = self.player.rect.x + offset_x
+        self.rect.y = self.player.rect.y + offset_y
