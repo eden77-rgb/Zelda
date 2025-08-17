@@ -1,27 +1,119 @@
 import pygame
+import math
+from enum import Enum
+
+class TransitionState(Enum):
+    NONE = 0
+    CLOSING = 1
+    CHANGING = 2
+    OPENING = 3
 
 class Transition:
     def __init__(self, screen, clock):
         self.screen = screen
         self.clock = clock
+        
+        self.transition_state = TransitionState.NONE
+        self.transition_timer = 0
+        self.transition_duration = 40
+        
+        self.circle_radius = 0
+        self.screen_center = (screen.get_width() // 2, screen.get_height() // 2)
+        self.max_radius = math.sqrt(screen.get_width()**2 + screen.get_height()**2)
+        
+        self.pending_map = None
+        self.pending_pos = None
+        self.player_ref = None
+        self.camera_ref = None
+        
 
-    def close(self):
-        frame = self.screen.copy()
-        max_radius = max(self.screen.get_width(), self.screen.get_height()) * 2
-        radius, step = 0, 20
+    def start_transition(self, player, camera, target_map, target_pos):
+        """Démarre la transition vers une nouvelle position/carte"""
+        if self.transition_state != TransitionState.NONE:
+            return
+            
+        self.transition_state = TransitionState.CLOSING
+        self.transition_timer = 0
+        self.circle_radius = 0
+        
+        self.player_ref = player
+        self.camera_ref = camera
+        self.pending_map = target_map
+        self.pending_pos = target_pos
+        
 
-        while radius < max_radius:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    return
+    def update(self):
+        """Met à jour la transition"""
+        if self.transition_state == TransitionState.NONE:
+            return False
+            
+        self.transition_timer += 1
+        progress = self.transition_timer / self.transition_duration
+        
+        if self.transition_state == TransitionState.CLOSING:
+            self.circle_radius = progress * self.max_radius
+            
+            if self.transition_timer >= self.transition_duration:
+                self.transition_state = TransitionState.CHANGING
+                self.transition_timer = 0
+                
+        elif self.transition_state == TransitionState.CHANGING:
+            if self.transition_timer == 1:
+                
+                self.camera_ref.switch_camera(self.pending_map, False)
+                self.player_ref.x = self.pending_pos[0]
+                self.player_ref.y = self.pending_pos[1]
+                self.player_ref.rect.topleft = (self.pending_pos[0], self.pending_pos[1])
+                
+                self.camera_ref.center(self.player_ref)
+            
+            if self.transition_timer >= self.transition_duration:
+                self.transition_state = TransitionState.OPENING
+                self.transition_timer = 0
+                
+        elif self.transition_state == TransitionState.OPENING:
+            self.circle_radius = (1 - progress) * self.max_radius
+            
+            if self.transition_timer >= self.transition_duration:
+                self.transition_state = TransitionState.NONE
+                self.circle_radius = 0
+                return False
+                
+        return True
+        
 
-            self.screen.blit(frame, (0, 0))
-            overlay = pygame.Surface(self.screen.get_size(), pygame.SRCALPHA)
-            pygame.draw.circle(overlay, (0, 0, 0, 255),
-                               (self.screen.get_width() // 2, self.screen.get_height() // 2),
-                               radius)
+    def draw(self):
+        """Dessine l'effet de transition par-dessus l'écran"""
+        if self.transition_state == TransitionState.NONE:
+            return
+            
+        if self.transition_state == TransitionState.CHANGING:
+            overlay = pygame.Surface(self.screen.get_size())
+            overlay.fill((0, 0, 0))
             self.screen.blit(overlay, (0, 0))
-            pygame.display.flip()
-            radius += step
-            self.clock.tick(60)
+
+        else:
+            overlay = pygame.Surface(self.screen.get_size())
+            overlay.fill((0, 0, 0))
+            
+            if self.transition_state == TransitionState.CLOSING:
+                hole_radius = self.max_radius - self.circle_radius
+
+                if hole_radius > 0:
+                    pygame.draw.circle(overlay, (255, 255, 255), 
+                                     self.screen_center, int(hole_radius))
+                    overlay.set_colorkey((255, 255, 255))
+
+            else:
+                hole_radius = self.max_radius - self.circle_radius
+
+                if hole_radius > 0:
+                    pygame.draw.circle(overlay, (255, 255, 255), 
+                                     self.screen_center, int(hole_radius))
+                    overlay.set_colorkey((255, 255, 255))
+            
+            self.screen.blit(overlay, (0, 0))
+            
+    def is_active(self):
+        """Retourne True si une transition est en cours"""
+        return self.transition_state != TransitionState.NONE

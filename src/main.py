@@ -41,11 +41,21 @@ class Game:
                     running = False
 
 
-            self.camera.center(self.player)
-            # self.camera.update()
+            # Mise à jour de la transition
+            self.transition.update()
+
+            # Centrer la caméra et mettre à jour le jeu seulement si pas de transition
+            if not self.transition.is_active():
+                self.camera.center(self.player)
+                self.map.group.update()
+                
+            elif self.transition.transition_state.name == "CHANGING":
+                # Pendant la phase CHANGING, on met à jour la caméra mais pas le joueur
+                self.camera.center(self.player)
             
-            self.map.group.update()
             self.map.draw_map()
+
+            self.transition.draw()
 
             pygame.display.flip()
             self.clock.tick(60)

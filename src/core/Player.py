@@ -140,16 +140,11 @@ class Player(pygame.sprite.Sprite):
             self.rect.topleft = (self.x, self.y)
 
         if self.check_switchmap(dx, dy)[0]:
-            self.transition.close()
-
             cle = self.check_switchmap(dx, dy)[1]
             map = self.data_switchmap["switchmap"][int(cle)]["to_map"]
             pos = self.data_switchmap["switchmap"][int(cle)]["top_pos"]
             
-            self.camera.switch_camera(map, False)
-            self.x = pos[0]
-            self.y = pos[1]
-            self.rect.topleft = (pos[0], pos[1])
+            self.transition.start_transition(self, self.camera, map, pos)
 
 
     def update(self):
