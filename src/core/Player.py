@@ -70,7 +70,7 @@ ATTACK_RIGHT = [
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, x, y, map, camera, data_switchmap):
+    def __init__(self, x, y, map, camera, data_switchmap, transition, screen):
         super().__init__()
 
         self.x = x
@@ -78,6 +78,8 @@ class Player(pygame.sprite.Sprite):
         self.map = map
         self.camera = camera
         self.data_switchmap = data_switchmap
+        self.transition = transition
+        self.screen = screen
 
         self.sprite_sheet = pygame.image.load("../assets/sprites/Link.png")
         self.image = pygame.Surface((16, 24))
@@ -138,12 +140,13 @@ class Player(pygame.sprite.Sprite):
             self.rect.topleft = (self.x, self.y)
 
         if self.check_switchmap(dx, dy)[0]:
+            self.transition.close()
+
             cle = self.check_switchmap(dx, dy)[1]
             map = self.data_switchmap["switchmap"][int(cle)]["to_map"]
             pos = self.data_switchmap["switchmap"][int(cle)]["top_pos"]
-
+            
             self.camera.switch_camera(map, False)
-
             self.x = pos[0]
             self.y = pos[1]
             self.rect.topleft = (pos[0], pos[1])

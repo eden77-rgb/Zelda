@@ -4,6 +4,7 @@ from maps.MapLoader import MapLoader
 from utils.JsonLoader import JsonLoader
 from core.Camera import Camera
 from core.Player import Player
+from core.Transition import Transition
 
 pygame.init()
 
@@ -24,8 +25,10 @@ class Game:
         self.map.load_map()
         self.map.add_group()
 
+        self.transition = Transition(self.screen, self.clock)
+
         self.data_switchmap = JsonLoader("../data/camera_switchmap.json").load_json()
-        self.player = Player(2560, 4362, self.map, self.camera, self.data_switchmap)
+        self.player = Player(2560, 4362, self.map, self.camera, self.data_switchmap, self.transition, self.screen)
 
         self.map.group.add(self.player, layer=1)
 
