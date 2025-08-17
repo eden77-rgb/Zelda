@@ -1,8 +1,8 @@
 import pygame
 
 class Camera:
-    def __init__(self, data, screen):
-        self.data = data
+    def __init__(self, data_pos, screen):
+        self.data_pos = data_pos
         self.screen = screen
 
         self.x = 0
@@ -10,11 +10,12 @@ class Camera:
 
 
     def create_camera(self, id):
-        self.start_x = self.data["cameras"][id]["start_x"]
-        self.start_y = self.data["cameras"][id]["start_y"]
+        self.current_id = id
+        self.start_x = self.data_pos["cameras"][id]["start_x"]
+        self.start_y = self.data_pos["cameras"][id]["start_y"]
 
-        self.end_x = self.data["cameras"][id]["end_x"]
-        self.end_y = self.data["cameras"][id]["end_y"]
+        self.end_x = self.data_pos["cameras"][id]["end_x"]
+        self.end_y = self.data_pos["cameras"][id]["end_y"]
 
         self.x = self.start_x
         self.y = self.start_y
@@ -22,6 +23,21 @@ class Camera:
         self.camera_rect = pygame.Rect(self.start_x, self.start_y, *self.screen.get_size())
         return self.camera_rect
     
+
+    def switch_camera(self, new_id, reset_pos=True):
+        self.current_id = new_id
+        self.start_x = self.data_pos["cameras"][new_id]["start_x"]
+        self.start_y = self.data_pos["cameras"][new_id]["start_y"]
+
+        self.end_x = self.data_pos["cameras"][new_id]["end_x"]
+        self.end_y = self.data_pos["cameras"][new_id]["end_y"]
+
+        if reset_pos:
+            self.x = self.start_x
+            self.y = self.start_y
+
+        self.camera_rect.topleft = (self.x, self.y)
+
 
     def center(self, player):
         center_x = player.x - self.screen.get_width() // 2

@@ -16,15 +16,16 @@ class Game:
         self.screen = pygame.display.set_mode((WIDTH * SCALE, HEIGHT * SCALE))
         self.clock = pygame.time.Clock()
 
-        self.data = JsonLoader("../data/camera_pos.json").load_json()
-        self.camera = Camera(self.data, self.screen)
+        self.data_pos = JsonLoader("../data/camera_pos.json").load_json()
+        self.camera = Camera(self.data_pos, self.screen)
         self.camera_rect = self.camera.create_camera(21)
 
         self.map = MapLoader("../maps/main.tmx", self.screen, self.camera_rect)
         self.map.load_map()
         self.map.add_group()
 
-        self.player = Player(2560, 4362, self.map.collision_objects)
+        self.data_switchmap = JsonLoader("../data/camera_switchmap.json").load_json()
+        self.player = Player(2560, 4362, self.map, self.camera, self.data_switchmap)
 
         self.map.group.add(self.player, layer=1)
 

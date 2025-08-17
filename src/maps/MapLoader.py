@@ -20,6 +20,7 @@ class MapLoader:
         self.map_layer.zoom = round(self.zoom, 1)
 
         self.collision_objects = self.get_collision_objects()
+        self.switchmap_objects = self.get_switchmap_objects()
 
 
     def add_group(self):
@@ -43,4 +44,16 @@ class MapLoader:
                     collision_objects.append(rect)
 
         return collision_objects
-         
+    
+
+    def get_switchmap_objects(self):
+        switchmap_object = {}
+
+        for layer in self.tmx_data.layers:
+            if layer.name == "switchmap":
+                for obj in layer:
+
+                    rect = pygame.Rect(obj.x, obj.y, obj.width, obj.height)
+                    switchmap_object[obj.type] = rect
+
+        return switchmap_object

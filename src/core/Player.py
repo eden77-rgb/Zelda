@@ -70,12 +70,14 @@ ATTACK_RIGHT = [
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, x, y, collision_layer):
+    def __init__(self, x, y, map, camera, data_switchmap):
         super().__init__()
 
         self.x = x
         self.y = y
-        self.collision_layer = collision_layer
+        self.map = map
+        self.camera = camera
+        self.data_switchmap = data_switchmap
 
         self.sprite_sheet = pygame.image.load("../assets/sprites/Link.png")
         self.image = pygame.Surface((16, 24))
@@ -110,11 +112,23 @@ class Player(pygame.sprite.Sprite):
         future_y = self.y + dy
         future_rect = pygame.Rect(future_x, future_y, self.rect.width, self.rect.height)
 
-        for obj in self.collision_layer:
+        for obj in self.map.collision_objects:
             if future_rect.colliderect(obj):
                 return False
             
         return True
+    
+
+    def check_switchmap(self, dx, dy):
+        future_x = self.x + dx
+        future_y = self.y + dy
+        future_rect = pygame.Rect(future_x, future_y, self.rect.width, self.rect.height)
+
+        for cle, valeur in self.map.switchmap_objects.items():
+            if future_rect.colliderect(valeur):
+                return [True, cle]
+            
+        return [False, cle]
 
 
     def move(self, dx, dy):
@@ -122,6 +136,17 @@ class Player(pygame.sprite.Sprite):
             self.x += dx
             self.y += dy
             self.rect.topleft = (self.x, self.y)
+
+        if self.check_switchmap(dx, dy)[0]:
+            cle = self.check_switchmap(dx, dy)[1]
+            map = self.data_switchmap["switchmap"][int(cle)]["to_map"]
+            pos = self.data_switchmap["switchmap"][int(cle)]["top_pos"]
+
+            self.camera.switch_camera(map, False)
+
+            self.x = pos[0]
+            self.y = pos[1]
+            self.rect.topleft = (pos[0], pos[1])
 
 
     def update(self):
