@@ -54,7 +54,10 @@ class Game:
                 self.camera.center(self.player)
             
             self.map.draw_map()
+
             self.hud.draw()
+            self.hud.hearth.update(self.player.life, self.player.max_life)
+            
             self.transition.draw()
 
             pygame.display.flip()

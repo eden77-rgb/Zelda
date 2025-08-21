@@ -106,8 +106,30 @@ class Player(pygame.sprite.Sprite):
 
         self.sword = Sword(self)
 
+        self.life = 3
+        self.max_life = 3
+
         self.rect.topleft = (self.x, self.y)
     
+
+    def take_damage(self, damage):
+        self.life -= damage
+        print(self.life)
+
+
+    def take_heal(self, health):
+        self.life += health
+
+        if self.life > self.max_life:
+            self.life = self.max_life
+
+        print(self.life)
+
+
+    def add_life(self):
+        self.max_life += 1
+        self.life = self.max_life
+
 
     def check_collision(self, dx, dy):
         future_x = self.x + dx
@@ -197,6 +219,15 @@ class Player(pygame.sprite.Sprite):
             self.last_direction = "right"
             self.current_animation = self.last_direction
             moving = True
+
+        if keys[pygame.K_e]:
+            self.take_damage(1)
+
+        if keys[pygame.K_a]:
+            self.take_heal(1)
+
+        if keys[pygame.K_t]:
+            self.add_life()
 
 
         if keys[pygame.K_SPACE] and not self.is_attacking:
