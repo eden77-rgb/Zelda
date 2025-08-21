@@ -5,6 +5,7 @@ from utils.JsonLoader import JsonLoader
 from core.Camera import Camera
 from core.Player import Player
 from core.Transition import Transition
+from core.HUD import HUD
 
 pygame.init()
 
@@ -30,6 +31,8 @@ class Game:
         self.data_switchmap = JsonLoader("../data/camera_switchmap.json").load_json()
         self.player = Player(2560, 4362, self.map, self.camera, self.data_switchmap, self.transition, self.screen)
 
+        self.hud = HUD(self.screen, self.player, SCALE)
+
         self.map.group.add(self.player, layer=1)
 
 
@@ -41,20 +44,17 @@ class Game:
                     running = False
 
 
-            # Mise à jour de la transition
             self.transition.update()
 
-            # Centrer la caméra et mettre à jour le jeu seulement si pas de transition
             if not self.transition.is_active():
                 self.camera.center(self.player)
                 self.map.group.update()
                 
             elif self.transition.transition_state.name == "CHANGING":
-                # Pendant la phase CHANGING, on met à jour la caméra mais pas le joueur
                 self.camera.center(self.player)
             
             self.map.draw_map()
-
+            self.hud.draw()
             self.transition.draw()
 
             pygame.display.flip()
