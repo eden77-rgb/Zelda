@@ -1,6 +1,7 @@
 import pygame
 
 from elements.Hearth import Hearth
+from elements.Ruby import Ruby
 
 class HUD:
     def __init__(self, screen, player, scale):
@@ -17,6 +18,7 @@ class HUD:
         surface_alpha = self.set_colors_key(surface, colors)
 
         self.hearth = Hearth(161, 24, self.scale, player.life, player.max_life)
+        self.rubys = Ruby(65, 24, self.scale, 0)
         
         self.image = pygame.transform.scale(surface_alpha, (256 * self.scale, 224 * self.scale))
 
@@ -27,6 +29,7 @@ class HUD:
         if self.visible:
             self.screen.blit(self.image, (0, 0))
             self.hearth.draw(self.screen)
+            self.rubys.draw(self.screen)
 
 
     def set_colors_key(self, surface, colors):
