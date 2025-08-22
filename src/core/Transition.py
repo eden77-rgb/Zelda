@@ -2,6 +2,8 @@ import pygame
 import math
 from enum import Enum
 
+from maps.MapLoader import MapLoader
+
 class TransitionState(Enum):
     NONE = 0
     CLOSING = 1
@@ -9,7 +11,8 @@ class TransitionState(Enum):
     OPENING = 3
 
 class Transition:
-    def __init__(self, screen, clock):
+    def __init__(self, game, screen, clock):
+        self.game = game
         self.screen = screen
         self.clock = clock
         
@@ -59,11 +62,20 @@ class Transition:
                 
         elif self.transition_state == TransitionState.CHANGING:
             if self.transition_timer == 1:
-                
                 self.camera_ref.switch_camera(self.pending_map, False)
+
+                new_map = MapLoader(self.camera_ref.data_pos["cameras"][self.camera_ref.current_id], self.screen, self.camera_ref.camera_rect)
+                new_map.load_map()
+                new_map.add_group()
+
+                self.game.map = new_map
+                self.player_ref.map = self.game.map
+
                 self.player_ref.x = self.pending_pos[0]
                 self.player_ref.y = self.pending_pos[1]
                 self.player_ref.rect.topleft = (self.pending_pos[0], self.pending_pos[1])
+
+                self.game.map.group.add(self.player_ref)
                 
                 self.camera_ref.center(self.player_ref)
             

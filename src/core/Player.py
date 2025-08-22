@@ -249,7 +249,7 @@ class Player(pygame.sprite.Sprite):
             self.image = self.animations[self.current_animation].reset()
 
 
-        #print("X: ", self.x, "Y: ", self.y)
+        print("X: ", self.x, "Y: ", self.y)
     
 
     def attack_input(self):

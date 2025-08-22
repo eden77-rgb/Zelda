@@ -26,14 +26,14 @@ class Game:
         self.map.load_map()
         self.map.add_group()
 
-        self.transition = Transition(self.screen, self.clock)
+        self.transition = Transition(self, self.screen, self.clock)
 
         self.data_switchmap = JsonLoader("../data/camera_switchmap.json").load_json()
         self.player = Player(311.75, 184, self.map, self.camera, self.data_switchmap, self.transition, self.screen)
 
         self.hud = HUD(self.screen, self.player, SCALE)
 
-        self.map.group.add(self.player, layer=1)
+        self.map.group.add(self.player, layer=10)
 
 
     def run(self):
