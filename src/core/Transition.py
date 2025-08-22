@@ -75,7 +75,7 @@ class Transition:
                 self.player_ref.y = self.pending_pos[1]
                 self.player_ref.rect.topleft = (self.pending_pos[0], self.pending_pos[1])
 
-                self.game.map.group.add(self.player_ref)
+                self.game.map.group.add(self.player_ref, layer=10)
                 
                 self.camera_ref.center(self.player_ref)
             
