@@ -2,6 +2,7 @@
     "cameras": [
         {
             "name": "Menu",
+            "map": "../maps/main.tmx",
             "start_x": -128,
             "start_y": -128,
             "end_x": -128,
@@ -10,6 +11,7 @@
         },
         {
             "name": "Sacred Grove",
+            "map": "../maps/main.tmx",
             "start_x": 192,
             "start_y": 912,
             "end_x": 192,
@@ -18,6 +20,7 @@
         },
         {
             "name": "Lost Woods",
+            "map": "../maps/main.tmx",
             "start_x": 193,
             "start_y": 1427,
             "end_x": 961,
@@ -26,6 +29,7 @@
         },
         {
             "name": "Graveyard",
+            "map": "../maps/main.tmx",
             "start_x": 192,
             "start_y": 2454,
             "end_x": 448,
@@ -34,6 +38,7 @@
         },
         {
             "name": "Kakariko Village",
+            "map": "../maps/main.tmx",
             "start_x": 193,
             "start_y": 2969,
             "end_x": 961,
@@ -42,6 +47,7 @@
         },
         {
             "name": "Blind's Hideout",
+            "map": "../maps/main.tmx",
             "start_x": 192,
             "start_y": 3996,
             "end_x": 448,
@@ -50,6 +56,7 @@
         },
         {
             "name": "Library & House of Books",
+            "map": "../maps/main.tmx",
             "start_x": 706,
             "start_y": 3996,
             "end_x": 962,
@@ -58,6 +65,7 @@
         },
         {
             "name": "Desert of Mystery",
+            "map": "../maps/main.tmx",
             "start_x": 193,
             "start_y": 4511,
             "end_x": 961,
@@ -66,6 +74,7 @@
         },
         {
             "name": "Twin Lumberjacks' Woodsmen's Hut",
+            "map": "../maps/main.tmx",
             "start_x": 1220,
             "start_y": 1426,
             "end_x": 1476,
@@ -74,6 +83,7 @@
         },
         {
             "name": "Death Mountain Access Cave",
+            "map": "../maps/main.tmx",
             "start_x": 1220,
             "start_y": 1940,
             "end_x": 1476,
@@ -82,6 +92,7 @@
         },
         {
             "name": "Whirlpool Waterway",
+            "map": "../maps/main.tmx",
             "start_x": 1220,
             "start_y": 2454,
             "end_x": 1476,
@@ -90,6 +101,7 @@
         },
         {
             "name": "1",
+            "map": "../maps/main.tmx",
             "start_x": 1220,
             "start_y": 2968,
             "end_x": 1476,
@@ -98,6 +110,7 @@
         },
         {
             "name": "Blacksmiths' Forge",
+            "map": "../maps/main.tmx",
             "start_x": 1220,
             "start_y": 3482,
             "end_x": 1476,
@@ -106,6 +119,7 @@
         },
         {
             "name": "Haunted Grove",
+            "map": "../maps/main.tmx",
             "start_x": 1220,
             "start_y": 3996,
             "end_x": 1476,
@@ -114,6 +128,7 @@
         },
         {
             "name": "Desert Plateau Cave",
+            "map": "../maps/main.tmx",
             "start_x": 1220,
             "start_y": 4510,
             "end_x": 1476,
@@ -122,6 +137,7 @@
         },
         {
             "name": "Secret Rupee Cave",
+            "map": "../maps/main.tmx",
             "start_x": 1220,
             "start_y": 5024,
             "end_x": 1476,
@@ -130,6 +146,7 @@
         },
         {
             "name": "Tower of Hera",
+            "map": "../maps/main.tmx",
             "start_x": 1735,
             "start_y": 1427,
             "end_x": 2503,
@@ -138,6 +155,7 @@
         },
         {
             "name": "Sanctuary",
+            "map": "../maps/main.tmx",
             "start_x": 1735,
             "start_y": 2454,
             "end_x": 1990,
@@ -146,6 +164,7 @@
         },
         {
             "name": "Graveyard",
+            "map": "../maps/main.tmx",
             "start_x": 2248,
             "start_y": 2454,
             "end_x": 2504,
@@ -154,6 +173,7 @@
         },
         {
             "name": "Hyrule Castle",
+            "map": "../maps/main.tmx",
             "start_x": 1735,
             "start_y": 2969,
             "end_x": 2503,
@@ -162,6 +182,7 @@
         },
         {
             "name": "2",
+            "map": "../maps/main.tmx",
             "start_x": 1734,
             "start_y": 3996,
             "end_x": 1990,
@@ -170,6 +191,7 @@
         },
         {
             "name": "Link's House",
+            "map": "../maps/main.tmx",
             "start_x": 2248,
             "start_y": 3996,
             "end_x": 2504,
@@ -178,6 +200,7 @@
         },
         {
             "name": "Great Swamp Whirlpool Waterway",
+            "map": "../maps/main.tmx",
             "start_x": 1734,
             "start_y": 4510,
             "end_x": 1990,
@@ -186,6 +209,7 @@
         },
         {
             "name": "Great Swamp",
+            "map": "../maps/main.tmx",
             "start_x": 2248,
             "start_y": 4510,
             "end_x": 2504,
@@ -194,6 +218,7 @@
         },
         {
             "name": "Swamp Ruins",
+            "map": "../maps/main.tmx",
             "start_x": 1734,
             "start_y": 5024,
             "end_x": 1990,
@@ -202,6 +227,7 @@
         },
         {
             "name": "3",
+            "map": "../maps/main.tmx",
             "start_x": 2248,
             "start_y": 5024,
             "end_x": 2504,
@@ -210,6 +236,7 @@
         },
         {
             "name": "Death Mountain",
+            "map": "../maps/main.tmx",
             "start_x": 2763,
             "start_y": 1427,
             "end_x": 3531,
@@ -218,6 +245,7 @@
         },
         {
             "name": "North Hyrule Fairy Fountain Cave",
+            "map": "../maps/main.tmx",
             "start_x": 2762,
             "start_y": 2454,
             "end_x": 3018,
@@ -226,6 +254,7 @@
         },
         {
             "name": "Magic Shop",
+            "map": "../maps/main.tmx",
             "start_x": 3276,
             "start_y": 2454,
             "end_x": 3532,
@@ -234,6 +263,7 @@
         },
         {
             "name": "Magic Shop Bridge",
+            "map": "../maps/main.tmx",
             "start_x": 2762,
             "start_y": 2968,
             "end_x": 3018,
@@ -242,6 +272,7 @@
         },
         {
             "name": "Mystery Rock",
+            "map": "../maps/main.tmx",
             "start_x": 2762,
             "start_y": 3482,
             "end_x": 3018,
@@ -250,6 +281,7 @@
         },
         {
             "name": "Lac Hylia Bridge",
+            "map": "../maps/main.tmx",
             "start_x": 2762,
             "start_y": 3996,
             "end_x": 3018,
@@ -258,6 +290,7 @@
         },
         {
             "name": "Eastern Ruins Fairy Fountain",
+            "map": "../maps/main.tmx",
             "start_x": 3276,
             "start_y": 3996,
             "end_x": 3532,
@@ -266,6 +299,7 @@
         },
         {
             "name": "Lake Hylia",
+            "map": "../maps/main.tmx",
             "start_x": 2763,
             "start_y": 4511,
             "end_x": 3531,
@@ -274,6 +308,7 @@
         },
         {
             "name": "Dark World Warp",
+            "map": "../maps/main.tmx",
             "start_x": 3790,
             "start_y": 1426,
             "end_x": 4032,
@@ -282,6 +317,7 @@
         },
         {
             "name": "Access Zora's Domain",
+            "map": "../maps/main.tmx",
             "start_x": 3790,
             "start_y": 1940,
             "end_x": 4032,
@@ -290,6 +326,7 @@
         },
         {
             "name": "Waterfall",
+            "map": "../maps/main.tmx",
             "start_x": 3790,
             "start_y": 2454,
             "end_x": 4032,
@@ -298,6 +335,7 @@
         },
         {
             "name": "Sahasrahla's Hideout",
+            "map": "../maps/main.tmx",
             "start_x": 3277,
             "start_y": 2969,
             "end_x": 4032,
@@ -306,6 +344,7 @@
         },
         {
             "name": "East Hyrule Fairy Fountain",
+            "map": "../maps/main.tmx",
             "start_x": 3790,
             "start_y": 3996,
             "end_x": 4032,
@@ -314,6 +353,7 @@
         },
         {
             "name": "Lake Hylia Thief's Hideout",
+            "map": "../maps/main.tmx",
             "start_x": 3790,
             "start_y": 4510,
             "end_x": 4032,
@@ -322,11 +362,22 @@
         },
         {
             "name": "Lake Hylia Whirlpool Waterway",
+            "map": "../maps/main.tmx",
             "start_x": 3790,
             "start_y": 5024,
             "end_x": 4032,
             "end_y": 5295,
             "zoom": 2
+        }
+        ,
+        {
+            "name": "Link's House Interior",
+            "map": "../maps/Link-house.tmx",
+            "start_x": 88,
+            "start_y": -200,
+            "end_x": 0,
+            "end_y": 0,
+            "zoom": 2.2
         }
     ]
 }

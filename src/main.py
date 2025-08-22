@@ -20,16 +20,16 @@ class Game:
 
         self.data_pos = JsonLoader("../data/camera_pos.json").load_json()
         self.camera = Camera(self.data_pos, self.screen)
-        self.camera_rect = self.camera.create_camera(21)
+        self.camera_rect = self.camera.create_camera(41)
 
-        self.map = MapLoader("../maps/main.tmx", self.screen, self.camera_rect)
+        self.map = MapLoader(self.data_pos["cameras"][self.camera.current_id], self.screen, self.camera_rect)
         self.map.load_map()
         self.map.add_group()
 
         self.transition = Transition(self.screen, self.clock)
 
         self.data_switchmap = JsonLoader("../data/camera_switchmap.json").load_json()
-        self.player = Player(2560, 4362, self.map, self.camera, self.data_switchmap, self.transition, self.screen)
+        self.player = Player(311.75, 184, self.map, self.camera, self.data_switchmap, self.transition, self.screen)
 
         self.hud = HUD(self.screen, self.player, SCALE)
 

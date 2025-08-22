@@ -3,18 +3,18 @@ import pytmx
 import pyscroll
 
 class MapLoader:
-    def __init__(self, path, screen, camera):
-        self.path = path
+    def __init__(self, data_pos, screen, camera):
+        self.data_pos = data_pos["map"]
         self.screen = screen
         self.camera_rect = camera
 
         self.x = 0
         self.y = 0
-        self.zoom = 2
+        self.zoom = data_pos["zoom"]
 
     
     def load_map(self):
-        self.tmx_data = pytmx.util_pygame.load_pygame(self.path)
+        self.tmx_data = pytmx.util_pygame.load_pygame(self.data_pos)
         self.map_data = pyscroll.TiledMapData(self.tmx_data)
         self.map_layer = pyscroll.BufferedRenderer(self.map_data, self.screen.get_size(), clamp_camera=False)
         self.map_layer.zoom = round(self.zoom, 1)
