@@ -3,6 +3,7 @@ import math
 from enum import Enum
 
 from maps.MapLoader import MapLoader
+from maps.ObjectManager import GrassManager
 
 class TransitionState(Enum):
     NONE = 0
@@ -78,6 +79,8 @@ class Transition:
                 self.game.map.group.add(self.player_ref, layer=10)
                 
                 self.camera_ref.center(self.player_ref)
+
+                self.game.grass_manager = GrassManager(self.game.map.grass_objects, self.player_ref, self.screen, new_map.group)
             
             if self.transition_timer >= self.transition_duration:
                 self.transition_state = TransitionState.OPENING

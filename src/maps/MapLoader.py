@@ -21,6 +21,7 @@ class MapLoader:
 
         self.collision_objects = self.get_collision_objects()
         self.switchmap_objects = self.get_switchmap_objects()
+        self.grass_objects = self.get_grass_objects()
 
 
     def add_group(self):
@@ -47,13 +48,26 @@ class MapLoader:
     
 
     def get_switchmap_objects(self):
-        switchmap_object = {}
+        switchmap_objects = {}
 
         for layer in self.tmx_data.layers:
             if layer.name == "switchmap":
                 for obj in layer:
 
                     rect = pygame.Rect(obj.x, obj.y, obj.width, obj.height)
-                    switchmap_object[obj.type] = rect
+                    switchmap_objects[obj.type] = rect
 
-        return switchmap_object
+        return switchmap_objects
+
+
+    def get_grass_objects(self):
+        grass_objects = []
+
+        for layer in self.tmx_data.layers:
+            if layer.name == "herbes":
+                for obj in layer:
+
+                    rect = pygame.Rect(obj.x, obj.y, obj.width, obj.height)
+                    grass_objects.append(rect)
+
+        return grass_objects

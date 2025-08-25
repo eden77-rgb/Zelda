@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="144" height="176" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="452">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="144" height="176" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="454">
  <tileset firstgid="1" source="../assets/tilesets/main-carte.tsx"/>
  <layer id="1" name="Calque de Tuiles 1" width="144" height="176">
   <data encoding="csv">
@@ -479,8 +479,8 @@
   <object id="167" name="switchmap" type="5" x="2375.88" y="4288" width="22.5" height="52"/>
   <object id="171" name="switchmap" type="6" x="2376.06" y="4352.03" width="21.5739" height="95.9688"/>
   <object id="450" name="switchmap" type="8" x="2558.94" y="4363" width="18.125" height="17"/>
-  <object id="451" x="2560" y="4390">
-   <point/>
-  </object>
+ </objectgroup>
+ <objectgroup id="4" name="herbes">
+  <object id="453" x="2520" y="4396" width="16" height="16"/>
  </objectgroup>
 </map>

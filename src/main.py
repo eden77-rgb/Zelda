@@ -1,6 +1,7 @@
 import pygame
 
 from maps.MapLoader import MapLoader
+from maps.ObjectManager import GrassManager
 from utils.JsonLoader import JsonLoader
 from core.Camera import Camera
 from core.Player import Player
@@ -31,6 +32,8 @@ class Game:
         self.data_switchmap = JsonLoader("../data/camera_switchmap.json").load_json()
         self.player = Player(311.75, 184, self.map, self.camera, self.data_switchmap, self.transition, self.screen)
 
+        self.grass_manager = GrassManager(self.map.grass_objects, self.player, self.screen, self.map.group)
+
         self.hud = HUD(self.screen, self.player, SCALE)
 
         self.map.group.add(self.player, layer=10)
@@ -54,6 +57,8 @@ class Game:
                 self.camera.center(self.player)
             
             self.map.draw_map()
+
+            self.grass_manager.update()
 
             self.hud.draw()
             self.hud.hearth.update(self.player.life, self.player.max_life)
