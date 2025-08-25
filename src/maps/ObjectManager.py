@@ -1,57 +1,42 @@
 import pygame
+from core.Animation import Animation
 
 class DestructibleObject:
     def __init__(self, player):
         self.player = player
         self.destroyed = False
 
+        self.animation = None
+        self.animation_sprite = None
+        self.animation_finished = False
 
-    def destroy(self):
+
+    def destroy(self, sprite_sheet, animation, rect):
         self.destroyed = True
 
+        self.animation = Animation(sprite_sheet, animation, colorkey="#ff80ff")
+        self.animation_sprite = pygame.sprite.Sprite()
 
-class Grass(DestructibleObject):
-    def __init__(self, player, grass_rect):
-        super().__init__(player)
-        self.grass_rect = grass_rect
+        animation_width = animation[0][2]
+        animation_height = animation[0][3]
 
+        self.animation_sprite.rect = pygame.Rect(
+            rect.x + (rect.width - animation_width) // 2,
+            rect.y + (rect.height - animation_height) // 2,
+            animation_width,
+            animation_height
+        )
 
-    def on_collision(self):
-        if self.player.sword.rect.colliderect(self.grass_rect) and not self.destroyed:
-            print("on_collision: ")
-            self.destroy()
-
-
-class GrassManager():
-    def __init__(self, grass_objects, player, screen, pyscroll_group):
-        self.grass_objects = grass_objects
-        self.player = player
-        self.screen = screen
-        self.pyscroll_group = pyscroll_group
-
-        self.grass_group = []
-        for rect in self.grass_objects:
-            self.grass_group.append(Grass(self.player, rect))
-
-        self.sprite_sheet = pygame.image.load("../assets/sprites/Destructible-Object.png")
-        self.image_destroyed = pygame.Surface((16, 16), pygame.SRCALPHA)
-        self.image_destroyed.blit(self.sprite_sheet, (0, 0), pygame.Rect(1, 1, 16, 16))
-
-
-    def update(self):
-        for grass in self.grass_group:
-            if not grass.destroyed:
-                grass.on_collision()
-
-                if grass.destroyed:
-                    destroyed_sprite = pygame.sprite.Sprite()
-                    destroyed_sprite.image = self.image_destroyed
-                    
-                    destroyed_sprite.rect = pygame.Rect(
-                        grass.grass_rect.x, 
-                        grass.grass_rect.y, 
-                        self.image_destroyed.get_width(), 
-                        self.image_destroyed.get_height()
-                    )
-                    
-                    self.pyscroll_group.add(destroyed_sprite, layer=5)
+    
+    def update(self, pyscroll_group, layer=5):
+        if self.destroyed and self.animation and not self.animation_finished:
+            self.animation.update(False)
+            
+            self.animation_sprite.image = self.animation.update(False)
+            
+            if self.animation_sprite not in pyscroll_group:
+                pyscroll_group.add(self.animation_sprite, layer=layer)
+            
+            if self.animation.is_finished():
+                self.animation_finished = True
+                pyscroll_group.remove(self.animation_sprite)

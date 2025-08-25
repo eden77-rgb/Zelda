@@ -1,10 +1,11 @@
 import pygame
 
 class Animation:
-    def __init__(self, sprite_sheet, frames, speed=0.15, flip=False, rotation=0, flip_list=None, rotation_list=None):
+    def __init__(self, sprite_sheet, frames, speed=0.15, flip=False, rotation=0, flip_list=None, rotation_list=None, colorkey="#004040"):
         self.sprite_sheet = sprite_sheet
         self.flip_list = flip_list
         self.rotation_list = rotation_list
+        self.colorkey = colorkey
         
         if flip_list or rotation_list:
             self.frames = []
@@ -28,7 +29,7 @@ class Animation:
     def get_image(self, x, y, width, height, flip=False, rotation=0):
         image = pygame.Surface((width, height))
         image.blit(self.sprite_sheet, (0, 0), (x, y, width, height))
-        image.set_colorkey("#004040")
+        image.set_colorkey(self.colorkey)
 
         if flip:
             image = pygame.transform.flip(image, True, False)

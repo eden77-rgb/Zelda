@@ -3,7 +3,7 @@ import math
 from enum import Enum
 
 from maps.MapLoader import MapLoader
-from maps.ObjectManager import GrassManager
+from maps.Grass import GrassManager
 
 class TransitionState(Enum):
     NONE = 0

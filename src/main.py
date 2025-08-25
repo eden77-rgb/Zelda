@@ -1,7 +1,7 @@
 import pygame
 
 from maps.MapLoader import MapLoader
-from maps.ObjectManager import GrassManager
+from maps.Grass import GrassManager
 from utils.JsonLoader import JsonLoader
 from core.Camera import Camera
 from core.Player import Player
