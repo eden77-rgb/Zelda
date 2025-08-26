@@ -1,5 +1,6 @@
 import pygame
 from core.Animation import Animation
+from core.Item import ItemManager
 
 class DestructibleObject:
     def __init__(self, player):
@@ -11,8 +12,9 @@ class DestructibleObject:
         self.animation_finished = False
 
 
-    def destroy(self, sprite_sheet, animation, rect):
+    def destroy(self, sprite_sheet, animation, rect, item_manager):
         self.destroyed = True
+        self.item_manager = item_manager
 
         self.animation = Animation(sprite_sheet, animation, colorkey="#ff80ff")
         self.animation_sprite = pygame.sprite.Sprite()
@@ -40,3 +42,9 @@ class DestructibleObject:
             if self.animation.is_finished():
                 self.animation_finished = True
                 pyscroll_group.remove(self.animation_sprite)
+
+                if hasattr(self, 'item_manager'):
+                    self.item_manager.spawn((
+                        self.animation_sprite.rect.centerx,
+                        self.animation_sprite.rect.centery
+                    ))

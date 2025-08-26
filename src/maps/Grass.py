@@ -18,25 +18,26 @@ class Grass(DestructibleObject):
         self.grass_rect = grass_rect
 
 
-    def on_collision(self, sprite_sheet, animation, rect):
+    def on_collision(self, sprite_sheet, animation, rect, item_manager):
         if self.player.sword.rect.colliderect(self.grass_rect) and not self.destroyed:
-            self.destroy(sprite_sheet, animation, rect)
+            self.destroy(sprite_sheet, animation, rect, item_manager)
 
 
 class GrassManager():
-    def __init__(self, grass_objects, player, screen, pyscroll_group):
+    def __init__(self, grass_objects, player, screen, pyscroll_group, item_manager):
         self.grass_objects = grass_objects
         self.player = player
         self.screen = screen
         self.pyscroll_group = pyscroll_group
+        self.item_manager = item_manager
 
         self.grass_group = []
         for rect in self.grass_objects:
             self.grass_group.append(Grass(self.player, rect))
 
-        self.sprite_sheet = pygame.image.load("../assets/sprites/Destructible-Object.png")
+        sprite_sheet = pygame.image.load("../assets/sprites/Destructible-Object.png")
         self.image_destroyed = pygame.Surface((16, 16), pygame.SRCALPHA)
-        self.image_destroyed.blit(self.sprite_sheet, (0, 0), pygame.Rect(1, 1, 16, 16))
+        self.image_destroyed.blit(sprite_sheet, (0, 0), pygame.Rect(1, 1, 16, 16))
 
         self.sfx_sprite_sheet = pygame.image.load("../assets/sfx/Bush-Pot-SFX.png")
 
@@ -44,7 +45,7 @@ class GrassManager():
     def update(self):
         for grass in self.grass_group:
             if not grass.destroyed:
-                grass.on_collision(self.sfx_sprite_sheet, SLASHING_BUSH, grass.grass_rect)
+                grass.on_collision(self.sfx_sprite_sheet, SLASHING_BUSH, grass.grass_rect, self.item_manager)
 
             if grass.destroyed and not hasattr(grass, 'static_sprite_added'):
                     destroyed_sprite = pygame.sprite.Sprite()

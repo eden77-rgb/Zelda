@@ -8,6 +8,7 @@ from core.Camera import Camera
 from core.Player import Player
 from core.Transition import Transition
 from core.HUD import HUD
+from core.Item import ItemManager
 
 pygame.init()
 
@@ -33,12 +34,14 @@ class Game:
         self.data_switchmap = JsonLoader("../data/camera_switchmap.json").load_json()
         self.player = Player(311.75, 184, self.map, self.camera, self.data_switchmap, self.transition, self.screen)
 
-        self.grass_manager = GrassManager(self.map.grass_objects, self.player, self.screen, self.map.group)
-        self.pot_manager = PotManager(self.map.pot_objects, self.player, self.screen, self.map.group)
+        self.item_manager = ItemManager(self.player, self.screen, self.map.group)
+
+        self.grass_manager = GrassManager(self.map.grass_objects, self.player, self.screen, self.map.group, self.item_manager)
+        self.pot_manager = PotManager(self.map.pot_objects, self.player, self.screen, self.map.group, self.item_manager)
 
         self.hud = HUD(self.screen, self.player, SCALE)
 
-        self.map.group.add(self.player, layer=10)
+        self.map.group.add(self.player, layer=100)
 
 
     def run(self):
@@ -62,6 +65,7 @@ class Game:
 
             self.grass_manager.update()
             self.pot_manager.update()
+            self.item_manager.update()
 
             self.hud.draw()
             self.hud.hearth.update(self.player.life, self.player.max_life)

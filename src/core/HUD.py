@@ -18,7 +18,7 @@ class HUD:
         surface_alpha = self.set_colors_key(surface, colors)
 
         self.hearth = Hearth(161, 24, self.scale, player.life, player.max_life)
-        self.rubys = Ruby(65, 24, self.scale, 0)
+        self.rubys = Ruby(65, 24, self.scale, self.player.ruby)
         
         self.image = pygame.transform.scale(surface_alpha, (256 * self.scale, 224 * self.scale))
 

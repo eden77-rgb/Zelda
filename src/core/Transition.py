@@ -4,6 +4,7 @@ from enum import Enum
 
 from maps.MapLoader import MapLoader
 from maps.Grass import GrassManager
+from maps.Pot import PotManager
 
 class TransitionState(Enum):
     NONE = 0
@@ -76,12 +77,14 @@ class Transition:
                 self.player_ref.y = self.pending_pos[1]
                 self.player_ref.rect.topleft = (self.pending_pos[0], self.pending_pos[1])
 
-                self.game.map.group.add(self.player_ref, layer=10)
+                self.game.map.group.add(self.player_ref, layer=100)
                 
                 self.camera_ref.center(self.player_ref)
 
-                self.game.grass_manager = GrassManager(self.game.map.grass_objects, self.player_ref, self.screen, new_map.group)
-            
+                self.game.grass_manager = GrassManager(self.game.map.grass_objects, self.player_ref, self.screen, new_map.group, self.game.item_manager)
+                self.game.pot_manager = PotManager(self.game.map.pot_objects, self.player_ref, self.screen, new_map.group, self.game.item_manager)
+                self.game.item_manager.group = new_map.group
+                
             if self.transition_timer >= self.transition_duration:
                 self.transition_state = TransitionState.OPENING
                 self.transition_timer = 0

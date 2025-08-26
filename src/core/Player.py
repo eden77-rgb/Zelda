@@ -109,6 +109,8 @@ class Player(pygame.sprite.Sprite):
         self.life = 3
         self.max_life = 3
 
+        self.ruby = 0
+
         self.rect.topleft = (self.x, self.y)
     
 

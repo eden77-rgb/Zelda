@@ -18,25 +18,26 @@ class Pot(DestructibleObject):
         self.pot_rect = pot_rect
 
 
-    def on_collision(self, sprite_sheet, animation, rect):
+    def on_collision(self, sprite_sheet, animation, rect, item_manager):
         if self.player.sword.rect.colliderect(self.pot_rect) and not self.destroyed:
-            self.destroy(sprite_sheet, animation, rect)
+            self.destroy(sprite_sheet, animation, rect, item_manager)
 
 
 class PotManager():
-    def __init__(self, pot_objects, player, screen, pyscroll_group):
+    def __init__(self, pot_objects, player, screen, pyscroll_group, item_manager):
         self.pot_objects = pot_objects
         self.player = player
         self.screen = screen
         self.pyscroll_group = pyscroll_group
+        self.item_manager = item_manager
 
         self.pot_group = []
         for rect in self.pot_objects:
             self.pot_group.append(Pot(self.player, rect))
 
-        self.sprite_sheet = pygame.image.load("../assets/sprites/Destructible-Object.png")
+        sprite_sheet = pygame.image.load("../assets/sprites/Destructible-Object.png")
         self.image_destroyed = pygame.Surface((16, 16), pygame.SRCALPHA)
-        self.image_destroyed.blit(self.sprite_sheet, (0, 0), pygame.Rect(69, 1, 16, 16))
+        self.image_destroyed.blit(sprite_sheet, (0, 0), pygame.Rect(69, 1, 16, 16))
 
         self.sfx_sprite_sheet = pygame.image.load("../assets/sfx/Bush-Pot-SFX.png")
 
@@ -44,7 +45,7 @@ class PotManager():
     def update(self):
         for pot in self.pot_group:
             if not pot.destroyed:
-                pot.on_collision(self.sfx_sprite_sheet, SLASHING_POT, pot.pot_rect)
+                pot.on_collision(self.sfx_sprite_sheet, SLASHING_POT, pot.pot_rect, self.item_manager)
 
             if pot.destroyed and not hasattr(pot, 'static_sprite_added'):
                     destroyed_sprite = pygame.sprite.Sprite()
