@@ -86,19 +86,13 @@ class ItemManager:
             self.player.take_heal(1)
 
         elif item.item_type == "green_ruby":
-            print("AVANT: ", self.player.ruby)
             self.player.ruby += 1
-            print("APRES: ", self.player.ruby)
 
         elif item.item_type == "blue_ruby":
-            print("AVANT: ", self.player.ruby)
             self.player.ruby += 5
-            print("APRES: ", self.player.ruby)
 
         elif item.item_type == "red_ruby":
-            print("AVANT: ", self.player.ruby)
             self.player.ruby += 20
-            print("APRES: ", self.player.ruby)
 
         self.items.remove(item)
         self.group.remove(item)

@@ -69,6 +69,7 @@ class Game:
 
             self.hud.draw()
             self.hud.hearth.update(self.player.life, self.player.max_life)
+            self.hud.rubys.update(self.player.ruby)
             
             self.transition.draw()
 

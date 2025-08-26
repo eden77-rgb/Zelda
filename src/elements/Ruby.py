@@ -38,7 +38,15 @@ class Ruby(HUDElement):
     
 
     def update(self, new_amout):
-        self.ruby_amount = new_amout
+        self.ruby_amount = str(new_amout)
+        self.numbers = []
+
+        if len(self.ruby_amount) < 3:
+            for _ in range(len(self.ruby_amount), 3):
+                self.numbers.append("0")
+        
+        for elt in self.ruby_amount:
+            self.numbers.append(elt)
 
 
     def draw(self, screen):
