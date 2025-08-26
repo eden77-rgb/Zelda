@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="60" height="60" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="79">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="60" height="60" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="82">
  <tileset firstgid="1" source="../assets/tilesets/houses-interior.tsx"/>
  <layer id="1" name="Sol" width="60" height="60">
   <data encoding="csv">
@@ -386,7 +386,6 @@
 </data>
  </layer>
  <objectgroup id="7" name="collision">
-  <object id="3" name="collision" type="collision" x="258.004" y="162" width="11.9961" height="44"/>
   <object id="5" name="collision" type="collision" x="272.004" y="160.004" width="28" height="32"/>
   <object id="6" name="collision" type="collision" x="274" y="250" width="27" height="15"/>
   <object id="8" name="collision" type="collision" x="370" y="202" width="43" height="22"/>
@@ -405,5 +404,10 @@
   <object id="78" x="344" y="272">
    <point/>
   </object>
+ </objectgroup>
+ <objectgroup id="9" name="pot">
+  <object id="80" x="256" y="176" width="16" height="16"/>
+  <object id="79" x="256" y="192" width="16" height="16"/>
+  <object id="81" x="256" y="160" width="16" height="16"/>
  </objectgroup>
 </map>

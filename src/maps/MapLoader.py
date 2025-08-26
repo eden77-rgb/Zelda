@@ -22,6 +22,7 @@ class MapLoader:
         self.collision_objects = self.get_collision_objects()
         self.switchmap_objects = self.get_switchmap_objects()
         self.grass_objects = self.get_grass_objects()
+        self.pot_objects = self.get_pot_objects()
 
 
     def add_group(self):
@@ -71,3 +72,16 @@ class MapLoader:
                     grass_objects.append(rect)
 
         return grass_objects
+    
+
+    def get_pot_objects(self):
+        pot_objects = []
+
+        for layer in self.tmx_data.layers:
+            if layer.name == "pot":
+                for obj in layer:
+
+                    rect = pygame.Rect(obj.x, obj.y, obj.width, obj.height)
+                    pot_objects.append(rect)
+
+        return pot_objects

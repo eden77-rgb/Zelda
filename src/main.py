@@ -2,6 +2,7 @@ import pygame
 
 from maps.MapLoader import MapLoader
 from maps.Grass import GrassManager
+from maps.Pot import PotManager
 from utils.JsonLoader import JsonLoader
 from core.Camera import Camera
 from core.Player import Player
@@ -33,6 +34,7 @@ class Game:
         self.player = Player(311.75, 184, self.map, self.camera, self.data_switchmap, self.transition, self.screen)
 
         self.grass_manager = GrassManager(self.map.grass_objects, self.player, self.screen, self.map.group)
+        self.pot_manager = PotManager(self.map.pot_objects, self.player, self.screen, self.map.group)
 
         self.hud = HUD(self.screen, self.player, SCALE)
 
@@ -59,6 +61,7 @@ class Game:
             self.map.draw_map()
 
             self.grass_manager.update()
+            self.pot_manager.update()
 
             self.hud.draw()
             self.hud.hearth.update(self.player.life, self.player.max_life)
