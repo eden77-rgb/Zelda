@@ -1,7 +1,6 @@
 import pygame
-
-from core.Sword import Sword
 from core.Animation import Animation
+from entities.Sword import Sword
 
 IDLE = (1, 3, 16, 24)
 

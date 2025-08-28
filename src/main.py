@@ -1,14 +1,14 @@
 import pygame
 
+from core.Camera import Camera
+from core.Transition import Transition
+from entities.Player import Player
+from hud.HUD import HUD
+from items.Item import ItemManager
 from maps.MapLoader import MapLoader
 from maps.Grass import GrassManager
 from maps.Pot import PotManager
 from utils.JsonLoader import JsonLoader
-from core.Camera import Camera
-from core.Player import Player
-from core.Transition import Transition
-from core.HUD import HUD
-from core.Item import ItemManager
 
 pygame.init()
 

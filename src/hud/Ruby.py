@@ -1,5 +1,5 @@
 import pygame
-from core.HUDElement import HUDElement
+from hud.HUDElement import HUDElement
 
 DISPLAY_NUMBER = {
     0: (259, 13, 7, 7),

@@ -1,5 +1,5 @@
 import pygame
-from core.HUDElement import HUDElement
+from hud.HUDElement import HUDElement
 
 class Hearth(HUDElement):
     def __init__(self, x, y, scale, life, max_life):

@@ -1,6 +1,5 @@
 import pygame
 from core.Animation import Animation
-from core.Item import ItemManager
 
 class DestructibleObject:
     def __init__(self, player):

@@ -1,7 +1,6 @@
 import pygame
-
-from elements.Hearth import Hearth
-from elements.Ruby import Ruby
+from hud.Hearth import Hearth
+from hud.Ruby import Ruby
 
 class HUD:
     def __init__(self, screen, player, scale):
