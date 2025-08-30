@@ -2,6 +2,7 @@ import pygame
 import math
 from enum import Enum
 
+from entities.NPC import NPCManager
 from maps.MapLoader import MapLoader
 from maps.Grass import GrassManager
 from maps.Pot import PotManager
@@ -84,6 +85,9 @@ class Transition:
                 self.game.grass_manager = GrassManager(self.game.map.grass_objects, self.player_ref, self.screen, new_map.group, self.game.item_manager)
                 self.game.pot_manager = PotManager(self.game.map.pot_objects, self.player_ref, self.screen, new_map.group, self.game.item_manager)
                 self.game.item_manager.group = new_map.group
+
+                self.game.npc_manager = NPCManager(new_map.spawn_objects, self.screen, new_map.group)
+                self.player_ref.npc_group = self.game.npc_manager.spawn_group
                 
             if self.transition_timer >= self.transition_duration:
                 self.transition_state = TransitionState.OPENING

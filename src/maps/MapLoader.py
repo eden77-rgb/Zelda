@@ -23,6 +23,7 @@ class MapLoader:
         self.switchmap_objects = self.get_switchmap_objects()
         self.grass_objects = self.get_grass_objects()
         self.pot_objects = self.get_pot_objects()
+        self.spawn_objects = self.get_spawn_objects()
 
 
     def add_group(self):
@@ -85,3 +86,16 @@ class MapLoader:
                     pot_objects.append(rect)
 
         return pot_objects
+
+
+    def get_spawn_objects(self):
+        spawn_object = []
+
+        
+        for layer in self.tmx_data.layers:
+            if layer.name == "spawn":
+                for obj in layer:
+                    object = {"type": obj.type, "x": obj.x, "y": obj.y}
+                    spawn_object.append(object)
+
+        return spawn_object

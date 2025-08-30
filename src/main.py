@@ -3,6 +3,7 @@ import pygame
 from core.Camera import Camera
 from core.Transition import Transition
 from entities.Player import Player
+from entities.NPC import NPCManager
 from hud.HUD import HUD
 from items.Item import ItemManager
 from maps.MapLoader import MapLoader
@@ -31,8 +32,10 @@ class Game:
 
         self.transition = Transition(self, self.screen, self.clock)
 
+        self.npc_manager = NPCManager(self.map.spawn_objects, self.screen, self.map.group)
+
         self.data_switchmap = JsonLoader("../data/camera_switchmap.json").load_json()
-        self.player = Player(311.75, 184, self.map, self.camera, self.data_switchmap, self.transition, self.screen)
+        self.player = Player(311.75, 184, self.map, self.camera, self.data_switchmap, self.transition, self.screen, self.npc_manager.spawn_group)
 
         self.item_manager = ItemManager(self.player, self.screen, self.map.group)
 
@@ -66,6 +69,8 @@ class Game:
             self.grass_manager.update()
             self.pot_manager.update()
             self.item_manager.update()
+
+            self.npc_manager.update(self.player)
 
             self.hud.draw()
             self.hud.hearth.update(self.player.life, self.player.max_life)

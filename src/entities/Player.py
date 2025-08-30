@@ -69,7 +69,7 @@ ATTACK_RIGHT = [
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, x, y, map, camera, data_switchmap, transition, screen):
+    def __init__(self, x, y, map, camera, data_switchmap, transition, screen, npc_group):
         super().__init__()
 
         self.x = x
@@ -79,6 +79,7 @@ class Player(pygame.sprite.Sprite):
         self.data_switchmap = data_switchmap
         self.transition = transition
         self.screen = screen
+        self.npc_group = npc_group
 
         self.sprite_sheet = pygame.image.load("../assets/sprites/Link.png")
         self.image = pygame.Surface((16, 24))
@@ -111,6 +112,8 @@ class Player(pygame.sprite.Sprite):
         self.ruby = 0
 
         self.rect.topleft = (self.x, self.y)
+        
+        print("NPCManager", self.npc_group)
     
 
     def take_damage(self, damage):
@@ -154,10 +157,22 @@ class Player(pygame.sprite.Sprite):
                 return [True, cle]
             
         return [False, cle]
+    
+
+    def check_npc_collision(self, dx, dy):
+        future_x = self.x + dx
+        future_y = self.y + dy
+        future_rect = pygame.Rect(future_x, future_y, self.rect.width, self.rect.height)
+
+        for npc in self.npc_group:
+            if future_rect.colliderect(npc.rect):
+                return False
+            
+        return True
 
 
     def move(self, dx, dy):
-        if self.check_collision(dx, dy):
+        if self.check_collision(dx, dy) and self.check_npc_collision(dx, dy):
             self.x += dx
             self.y += dy
             self.rect.topleft = (self.x, self.y)
