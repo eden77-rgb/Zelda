@@ -1,5 +1,6 @@
 import pygame
 from core.Animation import Animation
+from core.SoundManager import SoundManager
 from entities.Sword import Sword
 
 IDLE = (1, 3, 16, 24)
@@ -81,6 +82,10 @@ class Player(pygame.sprite.Sprite):
         self.screen = screen
         self.npc_group = npc_group
 
+        self.sound_manager = SoundManager()
+        self.sound_manager.load_sound("hit", "../assets/sound/effects/fighter-sword.mp3")
+        self.sound_manager.load_sound("low_hp", "../assets/sound/effects/low-hp.mp3")
+
         self.sprite_sheet = pygame.image.load("../assets/sprites/Link.png")
         self.image = pygame.Surface((16, 24))
         self.rect = self.image.get_rect()
@@ -108,6 +113,9 @@ class Player(pygame.sprite.Sprite):
 
         self.life = 3
         self.max_life = 3
+        
+        self.last_low_hp_time = 0
+        self.low_hp_delay = 1000
 
         self.ruby = 0
 
@@ -193,6 +201,13 @@ class Player(pygame.sprite.Sprite):
 
         self.attack_input()
 
+        if self.life <= 1:
+            now = pygame.time.get_ticks()
+            if now - self.last_low_hp_time > self.low_hp_delay:
+                self.sound_manager.play_sound("low_hp")
+                self.last_low_hp_time = now
+            
+
         if self.is_attacking:
             anim = self.animations[self.current_animation]
             self.image = anim.update(loop=False)
@@ -249,6 +264,7 @@ class Player(pygame.sprite.Sprite):
         if keys[pygame.K_SPACE] and not self.is_attacking:
             if current_time - self.time >= self.cooldown:
                 self.is_attacking = True
+                self.sound_manager.play_sound("hit")
 
                 self.sword.set_direction(self.last_direction)
 

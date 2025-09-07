@@ -2,6 +2,7 @@ import pygame
 
 from core.Camera import Camera
 from core.Transition import Transition
+from core.SoundManager import SoundManager
 from entities.Player import Player
 from entities.NPC import NPCManager
 from hud.HUD import HUD
@@ -42,6 +43,9 @@ class Game:
         self.grass_manager = GrassManager(self.map.grass_objects, self.player, self.screen, self.map.group, self.item_manager)
         self.pot_manager = PotManager(self.map.pot_objects, self.player, self.screen, self.map.group, self.item_manager)
 
+        self.sound_manager = SoundManager()
+        self.sound_manager.play_music("../assets/sound/music/Plaine-Hyrule.ogg")
+
         self.hud = HUD(self.screen, self.player, SCALE)
 
         self.map.group.add(self.player, layer=100)
@@ -53,7 +57,6 @@ class Game:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
-
 
             self.transition.update()
 

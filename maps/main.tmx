@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="144" height="176" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="485">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="144" height="176" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="521">
  <tileset firstgid="1" source="../assets/tilesets/main-carte.tsx"/>
  <layer id="1" name="Calque de Tuiles 1" width="144" height="176">
   <data encoding="csv">
@@ -497,6 +497,37 @@
   <object id="470" name="14" x="2616" y="4380" width="16" height="16"/>
   <object id="471" name="15" x="2600" y="4396" width="16" height="16"/>
   <object id="472" name="16" x="2616" y="4396" width="16" height="16"/>
+  <object id="485" x="2824" y="4476" width="16" height="16"/>
+  <object id="490" x="2808" y="4476" width="16" height="16"/>
+  <object id="491" x="2808" y="4460" width="16" height="16"/>
+  <object id="492" x="2792" y="4460" width="16" height="16"/>
+  <object id="493" x="2792" y="4444" width="16" height="16"/>
+  <object id="494" x="2680" y="4172" width="16" height="16"/>
+  <object id="495" x="2648" y="4156" width="16" height="16"/>
+  <object id="496" x="2552" y="4156" width="16" height="16"/>
+  <object id="497" x="2536" y="4172" width="16" height="16"/>
+  <object id="498" x="2647" y="4041" width="16" height="16"/>
+  <object id="499" x="2631" y="4041" width="16" height="16"/>
+  <object id="500" x="2631" y="4025" width="16" height="16"/>
+  <object id="501" x="2647" y="4025" width="16" height="16"/>
+  <object id="502" x="2583" y="4025" width="16" height="16"/>
+  <object id="504" x="2583" y="4041" width="16" height="16"/>
+  <object id="505" x="2567" y="4041" width="16" height="16"/>
+  <object id="506" x="2567" y="4025" width="16" height="16"/>
+  <object id="507" x="2759" y="4025" width="16" height="16"/>
+  <object id="508" x="2759" y="3993" width="16" height="16"/>
+  <object id="509" x="2775" y="4009" width="16" height="16"/>
+  <object id="510" x="2791" y="4025" width="16" height="16"/>
+  <object id="511" x="2039" y="4057" width="16" height="16"/>
+  <object id="512" x="2039" y="4041" width="16" height="16"/>
+  <object id="513" x="2023" y="4041" width="16" height="16"/>
+  <object id="514" x="2007" y="4025" width="16" height="16"/>
+  <object id="515" x="1991" y="4025" width="16" height="16"/>
+  <object id="516" x="1975" y="4025" width="16" height="16"/>
+  <object id="517" x="1959" y="4009" width="16" height="16"/>
+  <object id="518" x="1943" y="3993" width="16" height="16"/>
+  <object id="519" x="1927" y="3993" width="16" height="16"/>
+  <object id="520" x="1911" y="3993" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="5" name="spawn">
   <object id="478" name="spawn" type="1" x="2592" y="4576">
