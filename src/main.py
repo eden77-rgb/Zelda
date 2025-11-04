@@ -58,6 +58,11 @@ class Game:
                 if event.type == pygame.QUIT:
                     running = False
 
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_TAB:
+                        JsonLoader("../data/save.json").save_json(self.player, self.camera)
+                    
+
             self.transition.update()
 
             if not self.transition.is_active():
