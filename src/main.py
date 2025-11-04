@@ -23,9 +23,42 @@ class Game:
         self.screen = pygame.display.set_mode((WIDTH * SCALE, HEIGHT * SCALE))
         self.clock = pygame.time.Clock()
 
+        try:
+            print("Partie chargée")
+            self.save_data = JsonLoader("../data/save.json").load_json()
+
+        except FileNotFoundError:
+            print("Nouvelle partie")
+            self.save_data = None
+
+        
+        if self.save_data:
+            player_x = self.save_data["player"]["x"]
+            player_y = self.save_data["player"]["y"]
+            player_life = self.save_data["player"]["life"]
+            player_max_life = self.save_data["player"]["max_life"]
+            player_ruby = self.save_data["player"]["ruby"]
+
+            camera_x = self.save_data["camera"]["x"]
+            camera_y = self.save_data["camera"]["y"]
+            camera_current_id = self.save_data["camera"]["current_id"]
+
+        else:
+            player_x = 311.75
+            player_y = 184
+            player_life = 3
+            player_max_life = 3
+            player_ruby = 0
+
+            camera_x = 0
+            camera_y = 0
+            camera_current_id = 41
+
         self.data_pos = JsonLoader("../data/camera_pos.json").load_json()
         self.camera = Camera(self.data_pos, self.screen)
-        self.camera_rect = self.camera.create_camera(41)
+        self.camera.x = camera_x
+        self.camera.y = camera_y
+        self.camera_rect = self.camera.create_camera(camera_current_id)
 
         self.map = MapLoader(self.data_pos["cameras"][self.camera.current_id], self.screen, self.camera_rect)
         self.map.load_map()
@@ -36,7 +69,10 @@ class Game:
         self.npc_manager = NPCManager(self.map.spawn_objects, self.screen, self.map.group)
 
         self.data_switchmap = JsonLoader("../data/camera_switchmap.json").load_json()
-        self.player = Player(311.75, 184, self.map, self.camera, self.data_switchmap, self.transition, self.screen, self.npc_manager.spawn_group)
+        self.player = Player(player_x, player_y, self.map, self.camera, self.data_switchmap, self.transition, self.screen, self.npc_manager.spawn_group)
+        self.player.life = player_life
+        self.player.max_life = player_max_life
+        self.player.ruby = player_ruby
 
         self.item_manager = ItemManager(self.player, self.screen, self.map.group)
 

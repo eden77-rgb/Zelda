@@ -1,14 +1,1 @@
-{
-    "player": {
-        "x": 311.75,
-        "y": 184,
-        "life": 3,
-        "max_life": 3,
-        "ruby": 0
-    },
-    "camera": {
-        "x": 88,
-        "y": -40,
-        "current_id": 41
-    }
-}
+{"player": {"x": 2607.0, "y": 4032.0, "life": 3, "max_life": 3, "ruby": 38}, "camera": {"x": 2351.0, "y": 3769, "current_id": 19}}

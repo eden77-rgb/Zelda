@@ -32,4 +32,4 @@ class JsonLoader:
         with open(self.path, "w") as file:
             file.write(json.dumps(self.data_dict))
 
-        print("Donées sauvegarder")
+        print("Données sauvegarder")
