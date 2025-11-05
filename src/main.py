@@ -24,8 +24,8 @@ class Game:
         self.clock = pygame.time.Clock()
 
         try:
-            print("Partie chargée")
             self.save_data = JsonLoader("../data/save.json").load_json()
+            print("Partie chargée")
 
         except FileNotFoundError:
             print("Nouvelle partie")

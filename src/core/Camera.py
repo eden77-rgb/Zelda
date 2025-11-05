@@ -20,6 +20,7 @@ class Camera:
         self.x = self.start_x
         self.y = self.start_y
 
+        print(f"create_camera: {self.current_id} - {self.start_x} - {self.start_y}")
         self.camera_rect = pygame.Rect(self.start_x, self.start_y, *self.screen.get_size())
         return self.camera_rect
     
@@ -36,6 +37,7 @@ class Camera:
             self.x = self.start_x
             self.y = self.start_y
 
+        print(f"switch_camera: {self.current_id} - {self.start_x} - {self.start_y}")
         self.camera_rect.topleft = (self.x, self.y)
 
 
