@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="144" height="176" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="521">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="144" height="176" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="573">
  <tileset firstgid="1" source="../assets/tilesets/main-carte.tsx"/>
  <layer id="1" name="Calque de Tuiles 1" width="144" height="176">
   <data encoding="csv">
@@ -471,14 +471,19 @@
   <object id="447" name="collision" type="collision" x="1992" y="3209.04" width="31.0435" height="31.913"/>
  </objectgroup>
  <objectgroup id="3" name="switchmap">
-  <object id="154" name="switchmap" type="0" x="2376.36" y="4480" width="20.5455" height="68.1818"/>
-  <object id="159" name="switchmap" type="1" x="2583.63" y="4604.63" width="49" height="15"/>
-  <object id="161" name="switchmap" type="2" x="2866.13" y="4480.88" width="21.5" height="63"/>
-  <object id="163" name="switchmap" type="3" x="2528.09" y="4108" width="127.909" height="20"/>
-  <object id="164" name="switchmap" type="4" x="2656" y="4108.03" width="168.031" height="19.9688"/>
-  <object id="167" name="switchmap" type="5" x="2375.88" y="4288" width="22.5" height="52"/>
-  <object id="171" name="switchmap" type="6" x="2376.06" y="4352.03" width="21.5739" height="95.9688"/>
+  <object id="154" name="switchmap" type="0" x="2376.36" y="4480" width="10" height="68.1818"/>
+  <object id="159" name="switchmap" type="1" x="2583.63" y="4610.63" width="49" height="10"/>
+  <object id="161" name="switchmap" type="2" x="2878.13" y="4480.88" width="10" height="63"/>
+  <object id="163" name="switchmap" type="3" x="2528.09" y="4108" width="127.909" height="10"/>
+  <object id="164" name="switchmap" type="4" x="2656" y="4108.03" width="168.031" height="10"/>
+  <object id="167" name="switchmap" type="5" x="2375.88" y="4288" width="10" height="52"/>
+  <object id="171" name="switchmap" type="6" x="2376.06" y="4352.03" width="10" height="95.9688"/>
   <object id="450" name="switchmap" type="8" x="2558.94" y="4363" width="18.125" height="17"/>
+  <object id="560" name="switchmap" type="9" x="2656" y="4096" width="167.087" height="12.087"/>
+  <object id="561" name="switchmap" type="10" x="2528.04" y="4096" width="127.957" height="10"/>
+  <object id="562" name="switchmap" type="11" x="2368" y="4480" width="8.36364" height="68.1818"/>
+  <object id="563" name="switchmap" type="12" x="2368" y="4351.82" width="8.36364" height="96.1818"/>
+  <object id="564" name="switchmap" type="13" x="2368" y="4288" width="7.27273" height="52.3636"/>
  </objectgroup>
  <objectgroup id="4" name="herbes">
   <object id="453" name="1" x="2520" y="4396" width="16" height="16"/>
@@ -528,6 +533,40 @@
   <object id="518" x="1943" y="3993" width="16" height="16"/>
   <object id="519" x="1927" y="3993" width="16" height="16"/>
   <object id="520" x="1911" y="3993" width="16" height="16"/>
+  <object id="522" x="2519" y="3753" width="16" height="16"/>
+  <object id="523" x="2519" y="3769" width="16" height="16"/>
+  <object id="524" x="2519" y="3785" width="16" height="16"/>
+  <object id="525" x="2535" y="3753" width="16" height="16"/>
+  <object id="526" x="2535" y="3769" width="16" height="16"/>
+  <object id="527" x="2551" y="3753" width="16" height="16"/>
+  <object id="529" x="2567" y="3785" width="16" height="16"/>
+  <object id="530" x="2583" y="3785" width="16" height="16"/>
+  <object id="531" x="2583" y="3769" width="16" height="16"/>
+  <object id="533" x="2615" y="3785" width="16" height="16"/>
+  <object id="534" x="2615" y="3769" width="16" height="16"/>
+  <object id="535" x="2615" y="3753" width="16" height="16"/>
+  <object id="536" x="2631" y="3769" width="16" height="16"/>
+  <object id="537" x="2631" y="3753" width="16" height="16"/>
+  <object id="538" x="2647" y="3753" width="16" height="16"/>
+  <object id="539" x="2663" y="3785" width="16" height="16"/>
+  <object id="540" x="2679" y="3785" width="16" height="16"/>
+  <object id="541" x="2679" y="3769" width="16" height="16"/>
+  <object id="543" x="2759" y="3545" width="16" height="16"/>
+  <object id="544" x="2759" y="3497" width="16" height="16"/>
+  <object id="545" x="2727" y="3481" width="16" height="16"/>
+  <object id="546" x="2759" y="3449" width="16" height="16"/>
+  <object id="547" x="2727" y="3385" width="16" height="16"/>
+  <object id="548" x="2759" y="3385" width="16" height="16"/>
+  <object id="549" x="2727" y="3353" width="16" height="16"/>
+  <object id="550" x="2759" y="3353" width="16" height="16"/>
+  <object id="551" x="2727" y="3321" width="16" height="16"/>
+  <object id="552" x="2759" y="3321" width="16" height="16"/>
+  <object id="553" x="2743" y="3273" width="16" height="16"/>
+  <object id="554" x="2791" y="3273" width="16" height="16"/>
+  <object id="555" x="2727" y="3241" width="16" height="16"/>
+  <object id="556" x="2791" y="3225" width="16" height="16"/>
+  <object id="557" x="2727" y="3161" width="16" height="16"/>
+  <object id="558" x="2759" y="3241" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="5" name="spawn">
   <object id="478" name="spawn" type="1" x="2592" y="4576">
